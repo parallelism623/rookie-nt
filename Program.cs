@@ -1,4 +1,6 @@
-﻿namespace Program;
+﻿using System.Reflection;
+
+namespace Program;
 
 public class Program{
     static List<Car> Cars = CarHelper.InitialData().ToList();
@@ -14,61 +16,102 @@ public class Program{
     {
         return choiceWithAction.Keys.Contains(choice);
     }
-
     static void AddCar()
     {
         try{
             Cars.Add(CarHelper.InputNewCar());
             Console.WriteLine(Message.CarAddedSuccessfully);
         }
-        catch{
-            Console.WriteLine(Message.CarAddedFail);
+        catch(Exception ex){
+            Console.WriteLine($"{Message.CarAddedFail}!\nFail by: {ex.Message}");
         }
     }
-    static void ViewAllCars()
+    private static void PrintCarsInformation(List<Car> cars)
     {
-        foreach(var car in Cars)
+        foreach(var car in cars)
         {
             Console.WriteLine(car);
         }
     }
-
-    static IEnumerable<Car> SearchCarsByMake()
+    private static IEnumerable<Car> GetAllCars()
+    {
+        return Cars ?? new List<Car>();
+    }
+    static void ViewAllCars()
+    {
+        PrintCarsInformation(Cars);
+    }
+    
+    static void SearchCarsByMake()
     {
         Console.WriteLine(Message.EnterMakeOfCar);
         var make = Console.ReadLine();
-        return Cars.Where(c => c.Make == make);
+        CarHelper.ValidateMakeOfCar(make!);
+        var cars = GetAllCars().Where(c => c.Make == make).ToList();
+        if(cars.Any())
+        {
+            PrintCarsInformation(cars);
+        }
+        else{
+            Console.WriteLine(Message.CarNotFoundByMake);
+        }
     }
 
-    static IEnumerable<Car> FilterCarsByType()
+    static void FilterCarsByType()
     {
         Console.WriteLine(Message.EnterCarType);
         var type = Console.ReadLine();
-        Enum.TryParse(type, out Type result);
-        return Cars.Where(c => c.Type.ToString() == result.ToString());
+        CarHelper.ValidateTypeOfCar(type!);
+        Enum.TryParse(type, out CarType result);
+        var carsFilterByType = GetAllCars().Where(c => c.Type.ToString().Contains(result.ToString())).ToList();
+        
+        if(carsFilterByType.Any())
+        {
+            PrintCarsInformation(carsFilterByType);
+        }
+        else
+        {
+            Console.WriteLine(Message.CarNotFoundByType);
+        }
     }
     static void RemoveCarByModel()
     {
         Console.WriteLine(Message.EnterModelOfCar);
         var model = Console.ReadLine();
-        var car = Cars.FirstOrDefault(c => c.Model == model);
+        CarHelper.ValidateModelOfCar(model!);
+        var car = GetAllCars().FirstOrDefault(c => c.Model.Contains(model!));
         if(car != null)
         {
             Cars.Remove(car);
+            Console.WriteLine(string.Format(Message.CarDeleteSuccess, car));
+        }
+        else
+        {
+            Console.WriteLine(Message.CarNotFoundByModel);
         }
     }
-
-    public static void Main(string[] args){
+    
+    private static void PrintMenuOption()
+    {
         Console.WriteLine(Message.MenuAction);
         foreach(var key in choiceWithAction.Keys)
         {
             Console.WriteLine($"{key} {choiceWithAction[key]}");
         }
+    }
+
+    public static void Main(string[] args){
         while(true)
         {   
-            var input = Console.ReadLine() ?? throw new ArgumentNullException(ExceptionMessage.UserChoiceShouldNotEmpty);
+            PrintMenuOption();
             try{
-                var choice = int.Parse(input);
+                Console.WriteLine(Message.EnterChoice);
+                var input = Console.ReadLine() ?? throw new ArgumentNullException(ExceptionMessage.UserChoiceShouldNotEmpty);
+                int choice;
+                if(!int.TryParse(input, out choice))
+                {
+                    throw new Exception(ExceptionMessage.ChoiceBeNotNumber);
+                };
                 if(!IsChoiceValid(choice))
                 {
                     Console.WriteLine(ExceptionMessage.ChoiceNotMatchOption);
@@ -104,13 +147,14 @@ public class Program{
                     }
                     case 6:
                     {
+                        Console.WriteLine("Exit program");
                         return;
                     }
                 }
 
             }
-            catch{
-                Console.WriteLine(ExceptionMessage.ChoiceBeNotNumber);
+            catch(Exception ex){
+                Console.WriteLine(ex.Message);
                 continue;
             }
         }

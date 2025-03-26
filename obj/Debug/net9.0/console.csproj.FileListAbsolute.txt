@@ -12,3 +12,4 @@ C:\Users\hieud\Documents\code\C#\console\obj\Debug\net9.0\refint\console.dll
 C:\Users\hieud\Documents\code\C#\console\obj\Debug\net9.0\console.pdb
 C:\Users\hieud\Documents\code\C#\console\obj\Debug\net9.0\console.genruntimeconfig.cache
 C:\Users\hieud\Documents\code\C#\console\obj\Debug\net9.0\ref\console.dll
+C:\Users\hieud\Documents\code\C#\console\obj\Debug\net9.0\console.sourcelink.json

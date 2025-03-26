@@ -4,13 +4,13 @@ public class Car{
         Make = make;
         Model = model;
         Year = year;
-        Enum.TryParse(type, out Type enumType);
+        Enum.TryParse(type, out CarType enumType);
         Type = enumType;
     }
-    public string? Make {get;set;}
-    public string? Model {get;set;}
-    public int? Year{get;set;}
-    public Type? Type {get;set; }
+    public string Make {get;set;} = default!;
+    public string Model {get;set;} = default!;
+    public int Year{get;set;} = default!;
+    public CarType Type {get;set; } = default!;
     public override string ToString()
     {
         return $"Car information: Make: {Make}, Model: {Model}, Year: {Year}, Type: {Type}";
