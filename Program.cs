@@ -45,7 +45,7 @@ public class Program{
     static void SearchCarsByMake()
     {
         Console.WriteLine(Message.EnterMakeOfCar);
-        var make = Console.ReadLine();
+        var make = Console.ReadLine()?.Trim();
         CarHelper.ValidateMakeOfCar(make!);
         var cars = GetAllCars().Where(c => c.Make == make).ToList();
         if(cars.Any())
@@ -60,7 +60,7 @@ public class Program{
     static void FilterCarsByType()
     {
         Console.WriteLine(Message.EnterCarType);
-        var type = Console.ReadLine();
+        var type = Console.ReadLine()?.Trim();
         CarHelper.ValidateTypeOfCar(type!);
         Enum.TryParse(type, out CarType result);
         var carsFilterByType = GetAllCars().Where(c => c.Type.ToString().Contains(result.ToString())).ToList();
@@ -77,7 +77,7 @@ public class Program{
     static void RemoveCarByModel()
     {
         Console.WriteLine(Message.EnterModelOfCar);
-        var model = Console.ReadLine();
+        var model = Console.ReadLine()?.Trim();
         CarHelper.ValidateModelOfCar(model!);
         var car = GetAllCars().FirstOrDefault(c => c.Model.Contains(model!));
         if(car != null)
@@ -106,7 +106,7 @@ public class Program{
             PrintMenuOption();
             try{
                 Console.WriteLine(Message.EnterChoice);
-                var input = Console.ReadLine() ?? throw new ArgumentNullException(ExceptionMessage.UserChoiceShouldNotEmpty);
+                var input = Console.ReadLine()?.Trim() ?? throw new ArgumentNullException(ExceptionMessage.UserChoiceShouldNotEmpty);
                 int choice;
                 if(!int.TryParse(input, out choice))
                 {
