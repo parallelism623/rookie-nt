@@ -1,0 +1,14 @@
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\bin\Debug\net9.0\fundametal-2.exe
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\bin\Debug\net9.0\fundametal-2.deps.json
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\bin\Debug\net9.0\fundametal-2.runtimeconfig.json
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\bin\Debug\net9.0\fundametal-2.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\bin\Debug\net9.0\fundametal-2.pdb
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.AssemblyInfoInputs.cache
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.AssemblyInfo.cs
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.csproj.CoreCompileInputs.cache
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\refint\fundametal-2.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.pdb
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\fundametal-2.genruntimeconfig.cache
+C:\Users\hieud\Documents\code\C#\rookie-nt\fundametal-2\obj\Debug\net9.0\ref\fundametal-2.dll
