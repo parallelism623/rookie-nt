@@ -6,7 +6,7 @@ This project provides a simple API for user authentication.
 ## API Endpoints
 
 ### Login
-- **URL**: `https://localhost:7052/api/login`
+- **URL**: `https://localhost:7052/api/login?(locale=@)`
 - **Method**: `POST`
 - **Request Body**:
   ```json
@@ -20,3 +20,4 @@ This project provides a simple API for user authentication.
 ## Notes
 - Replace `[port]` with the actual port number your application is running on (e.g., `7052`).
 - Ensure the API is running locally before making requests.
+- Replace `@` in locale to choose language for request
