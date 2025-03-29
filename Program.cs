@@ -1,8 +1,10 @@
 ﻿using aspnetcore;
 using aspnetcore.Middlewares;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Localization;
 using Serilog;
 using Serilog.Events;
+using Serilog.Formatting.Json;
 using System.Globalization;
 
 try
@@ -17,29 +19,24 @@ try
     }
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Information()
-        // .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-        // .MinimumLevel.Override("System", LogEventLevel.Warning) 
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+        .MinimumLevel.Override("System", LogEventLevel.Warning) 
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .WriteTo.File(
-            Path.Combine(logDirectory, $"log_{DateTime.Now:yyyyMMdd}.txt"),
-            rollingInterval: RollingInterval.Day,
-            outputTemplate: "[{Level}] [{Timestamp:yyyy-MM-dd HH:mm:ss.fff}] : {Message} {NewLine} {Exception}"
+            new JsonFormatter(),
+            Path.Combine(logDirectory, $"log_{DateTime.Now:yyyyMMdd}.json"),
+            rollingInterval: RollingInterval.Day
         )
         .Enrich.FromLogContext()
         .CreateLogger();
     #endregion SERILOG_CONFIG
-
-    Log.Information("Ứng dụng đang khởi động...");
-
-
+    Log.Information("Starting app...");
     builder.Host.UseSerilog();
     builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
     builder.Services.AddApplicationDependencyInjection();
     builder.Services.AddControllers();
     builder.Services.AddExceptionHandler<ExceptionHandlerMiddleware>();
-
     var app = builder.Build();
-
     app.UseRequestLocalization();
 
     app.UseMiddleware<LoggingMiddleware>();

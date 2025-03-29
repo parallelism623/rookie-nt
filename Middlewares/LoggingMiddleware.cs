@@ -36,7 +36,8 @@ namespace aspnetcore.Middlewares
             _logger.LogInformation("Begin request: {Method} {Path} {QueryString} " +
                                     "| Request: {Request} | Lang: {Lang}",
                                     GetMethod(context), GetPath(context), 
-                                    GetQueryString(context), requestBody, 
+                                    GetQueryString(context), 
+                                    requestBody, 
                                     CultureInfo.CurrentUICulture.Name);
         }
 
@@ -62,8 +63,8 @@ namespace aspnetcore.Middlewares
                                         GetMethod(context), GetPath(context), 
                                         GetQueryString(context),
                                         responseBody,
-                                        CultureInfo.CurrentUICulture.Name
-                                        , stopwatch.ElapsedMilliseconds);
+                                        CultureInfo.CurrentUICulture.Name,
+                                        stopwatch.ElapsedMilliseconds);
                 memoryStream.Position = 0;
                 await memoryStream.CopyToAsync(originalBody);
             }

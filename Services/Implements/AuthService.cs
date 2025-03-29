@@ -37,7 +37,7 @@ namespace aspnetcore.Services.Implements
             {
                 throw new BadRequestException(Labels.UsernamePasswordIncorrect);
             }
-            _logger.LogInformation("User information: " + JsonSerializer.Serialize(user));
+            _logger.LogInformation("User information: {@UserInfo}", user);
             return new LoginResponse
             {
                 AccessToken = GetAccessToken(user),
