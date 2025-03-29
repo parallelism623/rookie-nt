@@ -26,7 +26,7 @@
                 Password = $"admin123*A",
                 Email = $"admin@rookie-nt.com",
                 Address = "239 Xuan Thuy street, Cau Giay, Ha Noi",
-                FirstName = $"Anh Hieu",
+                FirstName = $"Anh Hieu ",
                 LastName = $"Truong",
                 CreatedDate = DateTime.UtcNow,
                 ModifiedDate = DateTime.UtcNow,

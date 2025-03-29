@@ -1,7 +1,9 @@
 ﻿using aspnetcore;
 using aspnetcore.Middlewares;
+using Microsoft.AspNetCore.Localization;
 using Serilog;
 using Serilog.Events;
+using System.Globalization;
 
 try
 {
@@ -15,8 +17,8 @@ try
     }
     Log.Logger = new LoggerConfiguration()
         .MinimumLevel.Information()
-        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-        .MinimumLevel.Override("System", LogEventLevel.Warning) 
+        // .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+        // .MinimumLevel.Override("System", LogEventLevel.Warning) 
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .WriteTo.File(
             Path.Combine(logDirectory, $"log_{DateTime.Now:yyyyMMdd}.txt"),
@@ -31,17 +33,19 @@ try
 
 
     builder.Host.UseSerilog();
+    builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
     builder.Services.AddApplicationDependencyInjection();
     builder.Services.AddControllers();
     builder.Services.AddExceptionHandler<ExceptionHandlerMiddleware>();
 
     var app = builder.Build();
 
+    app.UseRequestLocalization();
+
     app.UseMiddleware<LoggingMiddleware>();
     app.UseExceptionHandler(_ => { });
     app.UseRouting();
     app.MapControllers();
-
     app.Run();
 
 }

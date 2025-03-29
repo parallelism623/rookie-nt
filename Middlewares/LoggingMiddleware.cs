@@ -3,6 +3,7 @@ using aspnetcore.Commons.Extensions;
 using Microsoft.AspNetCore.Http.Extensions;
 using Serilog.Context;
 using System.Diagnostics;
+using System.Globalization;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.Json;
@@ -32,8 +33,11 @@ namespace aspnetcore.Middlewares
             var request = context.Request;
             request.EnableBuffering();
             var requestBody = await request.Body.ReadAsStringAsync(true);
-            _logger.LogInformation("Begined Request: {Method} {Path} {QueryString} | Request: {Request}",
-            GetMethod(context), GetPath(context), GetQueryString(context), requestBody);
+            _logger.LogInformation("Begin request: {Method} {Path} {QueryString} " +
+                                    "| Request: {Request} | Lang: {Lang}",
+                                    GetMethod(context), GetPath(context), 
+                                    GetQueryString(context), requestBody, 
+                                    CultureInfo.CurrentUICulture.Name);
         }
 
         private async Task LogBodyResponse(HttpContext context)
@@ -52,10 +56,13 @@ namespace aspnetcore.Middlewares
                 memoryStream.Position = 0;
                 var responseBody = await new StreamReader(memoryStream).ReadToEndAsync();
 
-                _logger.LogInformation("Finished Request: {Method} {Path} {QueryString} | Response: {Response} | Time: {ElapsedMs} ms",
+                _logger.LogInformation("Finished request: {Method} {Path} " +
+                                        "{QueryString} | Response: {Response} " +
+                                        "| Lang: {Lang} | Time: {ElapsedMs} ms",
                                         GetMethod(context), GetPath(context), 
                                         GetQueryString(context),
-                                        responseBody
+                                        responseBody,
+                                        CultureInfo.CurrentUICulture.Name
                                         , stopwatch.ElapsedMilliseconds);
                 memoryStream.Position = 0;
                 await memoryStream.CopyToAsync(originalBody);
