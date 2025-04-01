@@ -1,0 +1,62 @@
+﻿@using mvc_todolist.Models.ModelViews
+@model List<PersonViewModel>
+@inject IHttpContextAccessor HttpContextAccessor
+@using Newtonsoft.Json
+
+@{
+
+    const string _defaultTitle = "";
+    List<string> _defaultColumns = new List<string>();
+    List<Dictionary<string, object>> _defaultData = new List<Dictionary<string, object>>();
+    ViewData["Title"] = "Rookies list";
+    var data = Model.Select(c =>
+    {
+        var dictionary = new Dictionary<string,object>();
+        foreach (var it in typeof(PersonViewModel).GetProperties().Where(p => p.DeclaringType == typeof(PersonViewModel)))
+        {
+            dictionary.Add(it.Name, it.GetValue(c) ?? default!);
+        }
+        return dictionary;
+    }).ToList();
+    var columns = typeof(PersonViewModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.DeclaredOnly).Select(c => c.Name).ToList();
+    var title = "Rookies list";
+    var columnsOptions = columns;
+    ViewBag.Columns = columns ?? _defaultColumns;
+
+    ViewBag.Title = title ?? _defaultTitle;
+    ViewBag.Data = data ?? _defaultData;
+    ViewBag.DataExport = JsonConvert.SerializeObject(Model.ToList());
+}
+<div>
+
+    <h2 class="rookies-index">@title</h2>
+@*     <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="columnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Columns list
+        </button>
+        <ul class="dropdown-menu p-3" aria-labelledby="columnDropdown">
+            @for (int i = 0; i < columnsOptions.Count; i++)
+            {
+                var it = columnsOptions[i];
+                <li>
+                    <label class="dropdown-item">
+                        <input type="checkbox" onclick="handleOnColumnListSelected('@ViewBag.Columns', '@it', @i)" class="column-checkbox" value="@it" checked>
+                        @it
+                    </label>
+                </li>
+            }
+        </ul>
+    </div> *@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 ">
+                @await Html.PartialAsync("_FilterView")
+            </div>
+            <div class="col-md-9" style="padding-left:50px">
+                @await Html.PartialAsync("_TableView")
+            </div>
+            <div class="col-md-2" style="padding-left:50px">
+            </div>
+        </div>
+    </div>
+</div>

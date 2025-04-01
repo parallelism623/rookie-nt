@@ -1,0 +1,49 @@
+﻿@using mvc_todolist.Commons
+
+<div class=" filter-container">
+    <label>Search</label>
+    <div class="input-group mb-3">
+        <input disabled type="text" class="form-control" placeholder="&#x1F50D; Tìm kiếm...">
+    </div>
+
+    <label>Age</label>
+    <div class="d-flex mb-3 age-input">
+        <input type="number" class="form-control from-age" placeholder="From" min="0">
+        <span class="mx-2">-</span>
+        <input type="number" class="form-control to-age" placeholder="To" min="0">
+    </div>
+    <label>BirthYear</label>
+    <div class="d-flex mb-3 birthyear-input">
+        <input type="number" class="form-control from-birthyear" placeholder="From" min="0">
+        <span class="mx-2">-</span>
+        <input type="number" class="form-control to-birthyear" placeholder="To" min="0">
+    </div>
+    <label>Gender</label>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="male" name="gender" value="0">
+            <label class="form-check-label" for="male"> Male</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="female" name="gender" value="1">
+            <label class="form-check-label" for="female"> Female</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="other" name="gender" value="2">
+            <label class="form-check-label" for="other"> Other</label>
+        </div>
+    </div>
+
+    <button asp-controller="Rookies" asp-action="Index" class="btn btn-primary w-100 filter-button">Lọc</button>
+
+    <div class="dropdown mt-3">
+        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-download"></i> Export
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="exportDropdown">
+            <li><a disabled class="dropdown-item" href=""><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
+            <li><a asp-controller="Rookies" asp-action="ExportToExcel" class="dropdown-item"><i class="fas fa-file-excel text-success"></i> Excel</a></li>
+        </ul>
+    </div>
+</div>
+

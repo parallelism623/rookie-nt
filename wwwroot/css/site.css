@@ -1,0 +1,111 @@
+﻿:root {
+    --header-footer-bg: #1f2d3d;
+    --nav-header-footer-on-hover: #2e4a6b;
+    --text-color: white;
+}
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+
+}
+
+.form-check-input{
+    border-radius: 10%;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.border-top.footer.text-muted {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    max-height:40px;
+}
+.header-app {
+    background-color: var(--header-footer-bg) !important;
+    color: var(--text-color) !important;
+}
+.header-app * {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+.footer {
+    background-color: var(--header-footer-bg) !important;
+    color: var(--text-color) !important;
+    padding: 10px 0;
+    text-align: center;
+}
+
+
+.navigate-item{
+    margin-left: 20px;
+    font-size: 20px;
+    align-content: center;
+}
+    .navigate-item:hover {
+        border-radius: 10px;
+        background-color: var(--nav-header-footer-on-hover) !important;
+        cursor: pointer;
+    }
+
+
+
+.navbar-brand{
+    font-size: 25px;
+}
+.container {
+    width: 100%; 
+    margin: 50px;
+}
+.table-responsive {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.table-responsive > tbody > tr{
+    height: 100px !important;
+}
+table tr {
+    height: 50px;
+}
+
+.filter-container {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
