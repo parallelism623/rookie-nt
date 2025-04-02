@@ -1,64 +1,115 @@
-﻿using ClosedXML.Excel;
-using Mapster;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using mvc_todolist.Commons;
+using mvc_todolist.Commons.Models;
 using mvc_todolist.Models.Entities;
-using mvc_todolist.Models.ModelViews;
-using mvc_todolist.Repositories.Interfaces;
+using mvc_todolist.ModelViews;
+using mvc_todolist.Services;
+using mvc_todolist.Services.ImportExport;
+using System.Text.Json;
 
 namespace mvc_todolist.Controllers
 {
     public class RookiesController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public RookiesController(IUnitOfWork unitOfWork)
+        private readonly IPersonService _personService;
+        private readonly IImportExportService _importExportService;
+        public RookiesController(IPersonService personService,
+            IImportExportService importExportService)
         {
-            _unitOfWork = unitOfWork;   
+            
+            _importExportService = importExportService;
+            _personService = personService;  
         }
         public async Task<IActionResult> Index([FromQuery] QueryParameters<Person> queryParameters)
         {
-            var personFilterByAge = await _unitOfWork.PersonRepository.GetAsync(filter: queryParameters.FilterExpression) ;
-            return View(personFilterByAge.Adapt<List<PersonViewModel>>());
+            var persons = await _personService.GetPersonAsync(queryParameters) ?? new List<PersonViewModel>();
+            SetTempData(GetCacheKeyCurrentListRookies(), GetPersonViewModelsJson(persons));
+            return View(persons);
+        }
+        public IActionResult CreatePerson()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreatePerson(PersonViewModel person)
+        {
+            await _personService.CreatePersonAsync(person);
+            return RedirectToAction("Index");
         }
         
-        public async Task<IActionResult> ExportToExcel()
+        public async Task<IActionResult> GetOldestPeron()
         {
-            var personFilterByAge = await _unitOfWork.PersonRepository.GetAsync();
-            using (var workbook = new XLWorkbook())
-            {
-                var worksheet = workbook.Worksheets.Add("People");
-
-                worksheet.Cell(1, 1).Value = "ID";
-                worksheet.Cell(1, 2).Value = "First Name";
-                worksheet.Cell(1, 3).Value = "Last Name";
-                worksheet.Cell(1, 4).Value = "Gender";
-                worksheet.Cell(1, 5).Value = "Date of Birth";
-                worksheet.Cell(1, 6).Value = "Age";
-                worksheet.Cell(1, 7).Value = "Address";
-
-                int row = 2;
-                foreach (var person in personFilterByAge)
-                {
-                    worksheet.Cell(row, 1).Value = person.Id.ToString();
-                    worksheet.Cell(row, 2).Value = person.FirstName;
-                    worksheet.Cell(row, 3).Value = person.LastName;
-                    worksheet.Cell(row, 4).Value = person.Gender;
-                    worksheet.Cell(row, 5).Value = person.DateOfBirth.ToString("yyyy-MM-dd");
-                    worksheet.Cell(row, 6).Value = person.Age;
-                    worksheet.Cell(row, 7).Value = person.Address;
-                    row++;
-                }
-
-
-                using (var stream = new MemoryStream())
-                {
-                    workbook.SaveAs(stream);
-                    stream.Position = 0;
-
-
-                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PeopleData.xlsx");
-                }
-            }
+            var oldestPerson = await _personService.GetOldestPersonAsync();
+            return View("Index", new List<PersonViewModel> { oldestPerson });
         }
+        public async Task<IActionResult> Update(Guid id)
+        {
+            var personViewModel = await _personService.GetPersonByIdAsync(id);
+            return View(personViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(PersonViewModel personViewModel)
+        {
+
+            await _personService.UpdatePerson(personViewModel);
+            SetTempData("message_response", GetResponseMessageJson("Ok", "Created new person successfully", 200));
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> ViewDetail(Guid id)
+        {
+            var person = await _personService.GetPersonByIdAsync(id);
+            return View(person);
+        }
+        public async Task<IActionResult> Remove(Guid id)
+        {
+            var person = await _personService.GetPersonByIdAsync(id);
+            
+            await _personService.RemovePerson(id);
+
+            SetTempData("message_response", GetResponseMessageJson("Success", $"Person {person.FirstName + person.LastName} was removed from the list successfully", 200));
+            return RedirectToAction("Index");
+        }
+        public IActionResult ExportToExcel()
+        {
+
+            var personFilterByAge = GetPersonViewModelsList(TempData[GetCacheKeyCurrentListRookies()]?.ToString());
+
+            var exportData = _importExportService.Export(new ExportData<PersonViewModel>{Data = personFilterByAge, FileName = "PeopleData.xlsx" });
+            
+            return File(exportData.DataBytes, exportData.ContentType, exportData.FileName);
+       
+        }
+
+        private void SetTempData(string key, object data)
+        {
+            TempData[key] = data;
+        }
+        private string GetCacheKeyCurrentListRookies()
+        {
+            return $"username:rookies:{CacheKey.CurrentRookiesData}";
+        }
+        private string GetPersonViewModelsJson(List<PersonViewModel> personViewModels)
+        {
+            return JsonSerializer.Serialize(personViewModels);
+        }
+        private string GetResponseMessageJson(string message, string details, int statusCode)
+        {
+            return JsonSerializer.Serialize(new Result(message, details, statusCode));
+        }
+
+        private List<PersonViewModel> GetPersonViewModelsList(string? personViewModels)
+        {
+            if(string.IsNullOrEmpty(personViewModels))
+            {
+                return new();
+            }    
+            return JsonSerializer.Deserialize<List<PersonViewModel>>(personViewModels!) ?? new();
+        }
+
+       
     }
 }

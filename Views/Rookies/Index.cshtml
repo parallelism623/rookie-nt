@@ -1,35 +1,13 @@
-﻿@using mvc_todolist.Models.ModelViews
+﻿@using mvc_todolist.ModelViews
+
 @model List<PersonViewModel>
-@inject IHttpContextAccessor HttpContextAccessor
-@using Newtonsoft.Json
-
 @{
-
-    const string _defaultTitle = "";
-    List<string> _defaultColumns = new List<string>();
-    List<Dictionary<string, object>> _defaultData = new List<Dictionary<string, object>>();
     ViewData["Title"] = "Rookies list";
-    var data = Model.Select(c =>
-    {
-        var dictionary = new Dictionary<string,object>();
-        foreach (var it in typeof(PersonViewModel).GetProperties().Where(p => p.DeclaringType == typeof(PersonViewModel)))
-        {
-            dictionary.Add(it.Name, it.GetValue(c) ?? default!);
-        }
-        return dictionary;
-    }).ToList();
-    var columns = typeof(PersonViewModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.DeclaredOnly).Select(c => c.Name).ToList();
-    var title = "Rookies list";
-    var columnsOptions = columns;
-    ViewBag.Columns = columns ?? _defaultColumns;
 
-    ViewBag.Title = title ?? _defaultTitle;
-    ViewBag.Data = data ?? _defaultData;
-    ViewBag.DataExport = JsonConvert.SerializeObject(Model.ToList());
 }
 <div>
 
-    <h2 class="rookies-index">@title</h2>
+    <h2 class="rookies-index">@ViewData["Title"]</h2>
 @*     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" id="columnDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             Columns list

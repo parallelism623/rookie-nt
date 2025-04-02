@@ -13,12 +13,13 @@
         public string FirstName { get; set; } = default!;
         public string LastName { get; set; } = default!;
         public string Address { get; set; } = default!;
-        public int Gender { get; set; } 
+        public int Gender { get; set; }  
         public string GetGenderString => Enum.GetName(typeof(Gender), Gender) ?? default!;
-    
-        public int Age { get; set; } 
+        public int Age { get; set; }
         public DateTime DateOfBirth { get; set; } = default!;
         public int BirthYear { get; set; }
+        
+
     }
 
     public enum Gender

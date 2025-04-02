@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("148ada35-34a5-4ebd-8b64-45d5d7736f52")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("mvc-todolist")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17f28aa1e29781774042d8840c239f446a6d50f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("mvc-todolist")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mvc-todolist")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

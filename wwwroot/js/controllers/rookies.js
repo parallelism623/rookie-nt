@@ -40,7 +40,7 @@ function buildQueryUrl(params) {
     return url.toString();
 }
 
-document.querySelector('.btn-primary').addEventListener('click', function (event) {
+document.querySelector('.filter-button').addEventListener('click', function (event) {
     getListRookies(event);
 });
 
@@ -52,7 +52,15 @@ function getListRookies(event) {
     window.location.href = queryUrl;
 }
 
+function handleRemovePerson(id) {
 
+    fetch(`${window.location.origin}/NashTech/Rookies/Remove/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    }).catch(e => {
+            alert(e.message);
+        });
+}
 function handleExport(data) {
     console.log(data);
     fetch(`${window.location.origin}/NashTech/Rookies/ExportToExcel`, {

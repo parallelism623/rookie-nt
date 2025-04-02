@@ -2,6 +2,8 @@
 using mvc_todolist.Models.Entities;
 using mvc_todolist.Repositories.Implements;
 using mvc_todolist.Repositories.Interfaces;
+using mvc_todolist.Services;
+using mvc_todolist.Services.ImportExport;
 
 namespace mvc_todolist
 {
@@ -9,7 +11,10 @@ namespace mvc_todolist
     {
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
-            return services.AddScoped<IUnitOfWork, UnitOfWork>();
+            return services.AddScoped<IUnitOfWork, UnitOfWork>()
+                           .AddScoped<IImportExportService, ImportExportService>()
+                           .AddScoped<IPersonService, PersonService>()
+                           .AddMemoryCacheService();
         }
 
 

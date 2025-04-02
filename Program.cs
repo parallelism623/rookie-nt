@@ -1,15 +1,10 @@
-
-using Microsoft.Data.Edm;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OData.ModelBuilder;
 using mvc_todolist;
-using mvc_todolist.Models;
 using mvc_todolist.Models.DbContexts;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
-
-
+using StackExchange.Redis; 
 
 try
 {
@@ -34,6 +29,14 @@ try
 
 
 
+    builder.Services.AddSession(options =>
+    {
+        options.Cookie.Name = "mvc-list-rookies-app";
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+        options.IOTimeout = TimeSpan.FromSeconds(10);
+    });
     builder.Services.AddControllersWithViews();
     builder.Services.AddHttpContextAccessor();
     builder.Services.AddApplicationService();
@@ -43,7 +46,6 @@ try
         options.UseInMemoryDatabase(databaseName: "RookieDb");
     });
     var app = builder.Build();
-
     app.UseExceptionHandler(_ => { });
     if (app.Environment.IsDevelopment())
     {
@@ -65,6 +67,7 @@ try
     app.UseRouting();
     
     app.UseAuthorization();
+    app.UseSession();
 
     app.MapStaticAssets();
     app.MapControllerRoute(

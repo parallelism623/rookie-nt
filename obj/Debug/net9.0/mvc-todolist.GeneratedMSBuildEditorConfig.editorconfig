@@ -36,28 +36,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Login/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/ExportToExcel.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xFeHBvcnRUb0V4Y2VsLmNzaHRtbA==
+[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/CreatePerson.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xDcmVhdGVQZXJzb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/ViewDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xWaWV3RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/_FilterView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xfRmlsdGVyVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Rookies/_TableView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xfVGFibGVWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Shared/_FilterView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaWx0ZXJWaWV3LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Shared/_TableView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UYWJsZVZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/hieud/Documents/code/C\#/rookie-nt/mvc-todolist/Views/Shared/_ValidationScriptsPartial.cshtml]

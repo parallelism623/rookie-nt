@@ -13,6 +13,14 @@ namespace mvc_todolist.Commons
         public int PageSize { get; set; } = 10;
         public int PageIndex { get; set; } = 1;
 
-        public Expression<Func<T, bool>> FilterExpression => ExpressionTreeHelper.GetFilterExpressionTree<T>(Filter, LogicFilter);
+        public Expression<Func<T, bool>> FilterExpression()
+        {
+           try{
+               return ExpressionTreeHelper.GetFilterExpressionTree<T>(Filter, LogicFilter);
+            }
+            catch{
+                return default!;
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@
 <div class=" filter-container">
     <label>Search</label>
     <div class="input-group mb-3">
-        <input disabled type="text" class="form-control" placeholder="&#x1F50D; Tìm kiếm...">
+        <input disabled type="text" class="form-control" placeholder="&#x1F50D; Search...">
     </div>
 
     <label>Age</label>
@@ -34,14 +34,15 @@
         </div>
     </div>
 
-    <button asp-controller="Rookies" asp-action="Index" class="btn btn-primary w-100 filter-button">Lọc</button>
-
+    <button asp-controller="Rookies" asp-action="Index" class="btn filter-button btn-primary w-100 filter-button">Filter</button>
+    <a asp-controller="Rookies" asp-action="CreatePerson" class="btn btn-primary w-100 filter-button add-person-button">Add person</a>
+    <a asp-controller="Rookies" asp-action="GetOldestPeron" class="btn btn-primary w-100 filter-button add-person-button">Oldest person</a>
     <div class="dropdown mt-3">
         <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-download"></i> Export
         </button>
         <ul class="dropdown-menu w-100" aria-labelledby="exportDropdown">
-            <li><a disabled class="dropdown-item" href=""><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
+            <li disabled><a disabled class="dropdown-item" href=""><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
             <li><a asp-controller="Rookies" asp-action="ExportToExcel" class="dropdown-item"><i class="fas fa-file-excel text-success"></i> Excel</a></li>
         </ul>
     </div>

@@ -6,7 +6,7 @@ namespace mvc_todolist.Commons.Helpers
 {
     public static class ExpressionTreeHelper
     {
-        public static Expression<Func<T, bool>> GetFilterExpressionTree<T>(string condition, string filterJoin)
+        public static Expression<Func<T, bool>> GetFilterExpressionTree<T>(string? condition, string? filterJoin)
         {
             if (condition == null)
             {

@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fbwwgyas39</Fingerprint>
-      <Integrity>m+PH0MuABdRMtrpAZtpxtpb4G48Mu4+nWyjiZlmQsuo=</Integrity>
+      <Fingerprint>n1o3o1okub</Fingerprint>
+      <Integrity>e9j0wLJ1lOsBl7dLXTrGS9dCUzdabBLhhZbgxmwntME=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -66,8 +66,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>b1rn5ldn8o</Fingerprint>
-      <Integrity>Ye6b8KzHWLXVKJpZ16/DVva5mCrL4ntyrUJWqVksDbg=</Integrity>
+      <Fingerprint>q6vfcxub5u</Fingerprint>
+      <Integrity>XmREBlTqQIeBbrCGONNuDs4CWbhzwZ7prsqiUbYThjQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\controllers\rookies.js'))</OriginalItemSpec>

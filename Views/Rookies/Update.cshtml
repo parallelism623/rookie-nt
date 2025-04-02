@@ -1,0 +1,58 @@
+﻿@using mvc_todolist.ModelViews
+@model PersonViewModel
+
+<h2>Update Person</h2>
+
+<form asp-action="Update" method="post">
+    <input asp-for="Id" type="hidden" />
+    @Html.Hidden("ModifiedAt", DateTime.Now)
+    @Html.Hidden("ModifiedBy", Guid.NewGuid())
+    @Html.Hidden("Password", Model.Password)
+    <div class="mb-3">
+        <label asp-for="Username" class="form-label"></label>
+        <input asp-for="Username" class="form-control" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Gender" class="form-label"></label>
+        <select asp-for="Gender" class="form-control">
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+            <option value="2">Other</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input asp-for="DateOfBirth" type="date" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

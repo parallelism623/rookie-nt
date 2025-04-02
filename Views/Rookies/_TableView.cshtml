@@ -1,0 +1,47 @@
+﻿
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <td>Username</td>
+                <td>FullName</td>
+                <td>Gender</td>
+                <td>DateOfBirth</td>
+                <td>Age</td>
+                <td>Address</td>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in @Model)
+            {
+                <tr>
+                    <td>@row.Username</td>
+                    <td>@row.FullName</td>
+                    <td>@(row.Gender == 0 ? "Male" : row.Gender == 1 ? "Female" : "Other")</td>
+                    <td>@row.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                    <td>@row.Age</td>
+                    <td>@row.Address</td>
+                    
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@row.Id">
+                            <i class="bi bi-pencil"></i> Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@row.Id">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                        <a class="btn btn-info btn-sm" asp-action="ViewDetail" asp-route-id="@row.Id">
+                            <i class="bi bi-eye"></i> ViewDetail
+                        </a>
+                    </td>
+                    
+                </tr>
+                
+            }
+        </tbody>
+</table>
+</div>
+<script src="~/js/controllers/rookies.js"></script>
