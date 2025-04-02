@@ -12,10 +12,12 @@ public class PersonViewModel
     public string Address { get; set; } = default!;
     public string FullName => LastName + " " + FirstName;
     public string Password { get; set; } = default!;
-    public DateTime CreateAt { get; set; } = DateTime.Now;
-    public Guid CreateBy { get; set; } = Guid.NewGuid();
     public int Gender { get; set; }
+    public DateTime CreateAt { get; set; }
+    public Guid CreateBy { get; set; }
     public DateTime DateOfBirth { get; set; }
     public int BirthYear => DateOfBirth.Year;
+    public bool Graduated { get; set; } 
     public int Age => DateTime.Now.Year - DateOfBirth.Year;
+
 }

@@ -32,13 +32,7 @@ namespace mvc_todolist.Middlewares
             var message = GetExceptionResponseMessage(exception);
             var detail = exception.Message;
             var errorResponse = new Result(message, detail, statusCode);
-
-            //if (errorResponse != null)
-            //{
-            //    tempData["message_response"] = JsonSerializer.Serialize(errorResponse);
-            //    context.Response.Redirect("/NashTech/Rookies/Index");
-
-            //}    
+            
             await context.Response.WriteAsJsonAsync(errorResponse, cancellationToken);
 
             return true;

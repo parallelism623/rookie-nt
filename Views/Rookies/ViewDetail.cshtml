@@ -1,56 +1,64 @@
 ﻿@using mvc_todolist.ModelViews
 @model PersonViewModel
 
-<h2>Detail Person</h2>
+@{
+    ViewData["Title"] = LabelsResource.DetailPersonTitle;
+}
+<h2>@LabelsResource.DetailPersonTitle</h2>
 
 <div>
     <input readonly type="hidden" id="Id" name="Id" value="@Model.Id" />
 </div>
 
 <div class="mb-3">
-    <label for="Username" class="form-label">Username</label>
+    <label for="Username" class="form-label">@LabelsResource.UsernameTitleColumn</label>
     <input readonly type="text" class="form-control" id="Username" name="Username" value="@Model.Username" />
     <span class="text-danger"></span>
 </div>
 
 <div class="mb-3">
-    <label for="FirstName" class="form-label">First Name</label>
+    <label for="FirstName" class="form-label">@LabelsResource.FirstNameTitleColumn</label>
     <input readonly type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.FirstName" />
     <span class="text-danger"></span>
 </div>
 
 <div class="mb-3">
-    <label for="LastName" class="form-label">Last Name</label>
+    <label for="LastName" class="form-label">@LabelsResource.FirstNameTitleColumn</label>
     <input readonly type="text" class="form-control" id="LastName" name="LastName" value="@Model.LastName" />
     <span class="text-danger"></span>
 </div>
 
 <div class="mb-3">
-    <label for="Address" class="form-label">Address</label>
+    <label for="Address" class="form-label">@LabelsResource.AddressTitleColumn</label>
     <input readonly type="text" class="form-control" id="Address" name="Address" value="@Model.Address" />
     <span class="text-danger"></span>
 </div>
 
 <div class="mb-3">
-    <label for="Gender" class="form-label">Gender</label>
+    <label for="Gender" class="form-label">@LabelsResource.GenderTitleColumn</label>
     <select class="form-control" id="Gender" name="Gender">
-        <option value="0" selected="@(Model.Gender == 0)">Male</option>
-        <option value="1" selected="@(Model.Gender == 1)">Female</option>
-        <option value="2" selected="@(Model.Gender == 2)">Other</option>
+        <option value="0" selected="@(Model.Gender == 0)">@LabelsResource.Male</option>
+        <option value="1" selected="@(Model.Gender == 1)">@LabelsResource.Female</option>
+        <option value="2" selected="@(Model.Gender == 2)">@LabelsResource.OtherGender</option>
     </select>
     <span class="text-danger"></span>
 </div>
 
 <div class="mb-3">
-    <label for="DateOfBirth" class="form-label">Date Of Birth</label>
+    <label for="DateOfBirth" class="form-label">@LabelsResource.DateOfBirthTitleColumn</label>
     <input readonly type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" 
            value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" />
     <span class="text-danger"></span>
 </div>
-
+<div class="mb-3">
+    <label class="form-label">Graduated</label>
+    <i class="@(Model.Graduated
+        ? "bi bi-check-square-fill text-success"
+        : "bi bi-x-square-fill text-danger")"></i>
+</div>
 <div class="text-center">
     <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@Model.Id">
-        <i class="bi bi-trash"></i> Delete
+        <i class="bi bi-trash"></i> @LabelsResource.DeleteButtonTxt
     </a>
 </div>
 

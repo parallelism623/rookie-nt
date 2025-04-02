@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using mvc_todolist.Commons;
 using mvc_todolist.Commons.Models;
 using mvc_todolist.Models.Entities;
 using mvc_todolist.ModelViews;
 using mvc_todolist.Services;
 using mvc_todolist.Services.ImportExport;
+using System.Globalization;
 using System.Text.Json;
 
 namespace mvc_todolist.Controllers
@@ -14,17 +16,21 @@ namespace mvc_todolist.Controllers
     {
         private readonly IPersonService _personService;
         private readonly IImportExportService _importExportService;
+        private readonly ILogger<RookiesController> _logger;
         public RookiesController(IPersonService personService,
-            IImportExportService importExportService)
+            IImportExportService importExportService,
+            ILogger<RookiesController> logger)
         {
-            
+            _logger = logger;
             _importExportService = importExportService;
             _personService = personService;  
         }
         public async Task<IActionResult> Index([FromQuery] QueryParameters<Person> queryParameters)
         {
+            LoggingInfoAction("Index", queryParameters);
+            var tmp = CultureInfo.CurrentCulture.Name;
             var persons = await _personService.GetPersonAsync(queryParameters) ?? new List<PersonViewModel>();
-            SetTempData(GetCacheKeyCurrentListRookies(), GetPersonViewModelsJson(persons));
+            SetTempData(GetSessionKeyCurrentListRookies(), GetPersonViewModelsJson(persons));
             return View(persons);
         }
         public IActionResult CreatePerson()
@@ -34,12 +40,14 @@ namespace mvc_todolist.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePerson(PersonViewModel person)
         {
+            LoggingInfoAction("CreatePerson", person);
             await _personService.CreatePersonAsync(person);
             return RedirectToAction("Index");
         }
         
         public async Task<IActionResult> GetOldestPeron()
         {
+            LoggingInfoAction("GetOldestPeron");
             var oldestPerson = await _personService.GetOldestPersonAsync();
             return View("Index", new List<PersonViewModel> { oldestPerson });
         }
@@ -52,9 +60,9 @@ namespace mvc_todolist.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(PersonViewModel personViewModel)
         {
-
+            LoggingInfoAction("Update", personViewModel);
             await _personService.UpdatePerson(personViewModel);
-            SetTempData("message_response", GetResponseMessageJson("Ok", "Created new person successfully", 200));
+            SetTempData("message_response", GetResponseMessageJson("Ok", "Update person successfully", 200));
 
             return RedirectToAction("Index");
         }
@@ -66,6 +74,7 @@ namespace mvc_todolist.Controllers
         }
         public async Task<IActionResult> Remove(Guid id)
         {
+            LoggingInfoAction("Remove", id);
             var person = await _personService.GetPersonByIdAsync(id);
             
             await _personService.RemovePerson(id);
@@ -73,10 +82,22 @@ namespace mvc_todolist.Controllers
             SetTempData("message_response", GetResponseMessageJson("Success", $"Person {person.FirstName + person.LastName} was removed from the list successfully", 200));
             return RedirectToAction("Index");
         }
+
+        public IActionResult SetLanguage(string culture)
+        {
+            LoggingInfoAction("SetLanguage", culture);
+            Response.Cookies.Append(
+                "_default_lang",
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return RedirectToAction("Index");
+        }
         public IActionResult ExportToExcel()
         {
 
-            var personFilterByAge = GetPersonViewModelsList(TempData[GetCacheKeyCurrentListRookies()]?.ToString());
+            var personFilterByAge = GetPersonViewModelsList(TempData[GetSessionKeyCurrentListRookies()]?.ToString());
 
             var exportData = _importExportService.Export(new ExportData<PersonViewModel>{Data = personFilterByAge, FileName = "PeopleData.xlsx" });
             
@@ -84,13 +105,17 @@ namespace mvc_todolist.Controllers
        
         }
 
+        private void LoggingInfoAction(string action, object data = null)
+        {
+            _logger.LogInformation("[Controller]: {Controller} - [Action]: {Action} {@Data}", "Rookies", action, data);
+        }
         private void SetTempData(string key, object data)
         {
             TempData[key] = data;
         }
-        private string GetCacheKeyCurrentListRookies()
+        private string GetSessionKeyCurrentListRookies()
         {
-            return $"username:rookies:{CacheKey.CurrentRookiesData}";
+            return $"username:rookies:current_rookies_data";
         }
         private string GetPersonViewModelsJson(List<PersonViewModel> personViewModels)
         {

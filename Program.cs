@@ -1,10 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using mvc_todolist;
 using mvc_todolist.Models.DbContexts;
-using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
-using StackExchange.Redis; 
 
 try
 {
@@ -21,24 +19,15 @@ try
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .WriteTo.File(
             new JsonFormatter(),
-            Path.Combine(logDirectory, $"/log_{DateTime.Now:yyyyMMdd}.json"),
+            Path.Combine(logDirectory, $"log_{DateTime.Now:yyyyMMdd}.json"),
             rollingInterval: RollingInterval.Day
         )
         .Enrich.FromLogContext()
         .CreateLogger();
+    builder.Host.UseSerilog();
+    builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
-
-
-    builder.Services.AddSession(options =>
-    {
-        options.Cookie.Name = "mvc-list-rookies-app";
-        options.IdleTimeout = TimeSpan.FromMinutes(30);
-        options.Cookie.HttpOnly = true;
-        options.Cookie.IsEssential = true;
-        options.IOTimeout = TimeSpan.FromSeconds(10);
-    });
     builder.Services.AddControllersWithViews();
-    builder.Services.AddHttpContextAccessor();
     builder.Services.AddApplicationService();
     builder.Services.AddExceptionHandler<mvc_todolist.Middlewares.ExceptionHandlerMiddleware>();
     builder.Services.AddDbContext<AppDbContext>(options =>
@@ -46,6 +35,8 @@ try
         options.UseInMemoryDatabase(databaseName: "RookieDb");
     });
     var app = builder.Build();
+
+
     app.UseExceptionHandler(_ => { });
     if (app.Environment.IsDevelopment())
     {
@@ -62,12 +53,11 @@ try
     }
     
     app.UseHttpsRedirection();
-
-   
+        
+    app.UseRequestLocalization();
     app.UseRouting();
     
     app.UseAuthorization();
-    app.UseSession();
 
     app.MapStaticAssets();
     app.MapControllerRoute(

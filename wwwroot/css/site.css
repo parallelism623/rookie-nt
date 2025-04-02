@@ -39,7 +39,7 @@ body {
   text-align: start;
 }
 
-.border-top.footer.text-muted {
+.text-muted {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -47,7 +47,8 @@ body {
     background: #f8f9fa;
     text-align: center;
     padding: 10px 0;
-    max-height:40px;
+    max-height: 40px;
+    color: var(--text-color) !important;
 }
 .header-app {
     background-color: var(--header-footer-bg) !important;

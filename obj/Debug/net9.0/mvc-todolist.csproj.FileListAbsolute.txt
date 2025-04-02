@@ -18,7 +18,6 @@ C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\scopedc
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\scopedcss\bundle\mvc-todolist.styles.css
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\scopedcss\projectbundle\mvc-todolist.bundle.scp.css
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\z3nmfqttoc-61n19gt1b8.gz
-C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\tjmxixazs1-xtxxf3hu2r.gz
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\7477puivi8-bqjiyaj88i.gz
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\567gvyzrl3-c2jlpeoesf.gz
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\qcwc7hcncr-erw9l3u2r3.gz
@@ -231,4 +230,14 @@ C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Pipelin
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\StackExchange.Redis.dll
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
 C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\7ftp3bkdk1-q6vfcxub5u.gz
-C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\x94l0m04hw-n1o3o1okub.gz
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\mvc-todolist.csproj.GenerateResource.cache
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\en\mvc-todolist.resources.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\mvc_todolist.Commons.Resources.LabelsResource.resources
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\mvc_todolist.Commons.Resources.LabelsResource.en.resources
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\en\mvc-todolist.resources.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\x94l0m04hw-dq0cveqrb6.gz
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Serilog.Extensions.Hosting.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Serilog.Extensions.Logging.dll
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Loggings\log_2025040220250402.json
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\bin\Debug\net9.0\Loggings\log_2025040320250403.json
+C:\Users\hieud\Documents\code\C#\rookie-nt\mvc-todolist\obj\Debug\net9.0\compressed\tjmxixazs1-3r8b2a0bt1.gz

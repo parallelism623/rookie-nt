@@ -1,4 +1,5 @@
-﻿@using mvc_todolist.Commons
+﻿@using System.Globalization
+@using mvc_todolist.Commons
 @using System.Text.Json
 <!DOCTYPE html>
 <html lang="en">
@@ -32,20 +33,28 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark navigate-item" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark navigate-item" asp-area="" asp-controller="Home" asp-action="Index">@LabelsResource.HomeNav</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark navigate-item" asp-area="" asp-controller="Rookies" asp-action="Index">Rookies</a>
+                            <a class="nav-link text-dark navigate-item" asp-area="" asp-controller="Rookies" asp-action="Index">@LabelsResource.RookiesNav</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <li class="nav-item me-2">
+                            <form asp-controller="Rookies" asp-action="SetLanguage" method="post" class="d-inline">
+                                <select name="culture" onchange="this.form.submit()" class="form-select form-select-sm w-auto">
+                                    <option value="en" selected="@(CultureInfo.CurrentCulture.Name.StartsWith("en"))">🇺🇸 @LabelsResource.EnglishLang</option>
+                                    <option value="vi" selected="@(CultureInfo.CurrentCulture.Name.StartsWith("vi"))">🇻🇳 @LabelsResource.VietnameseLang</option>
+                                </select>
+                            </form>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">Login</a></li>
-                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Register">Register</a></li>
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Login">@LabelsResource.LoginNav</a></li>
+                                <li><a class="dropdown-item" asp-controller="Account" asp-action="Register">@LabelsResource.RegisterNav</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -63,15 +72,15 @@
     <div class="toast-container position-fixed bottom-0 end-0 p-4" style="z-index: 1055;">
         <div id="universalToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header text-white">
-                <strong id="toastTitle" class="me-auto">Thông báo</strong>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                <strong id="toastTitle" class="me-auto"></strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="@LabelsResource.CloseTxt"></button>
             </div>
-            <div class="toast-body text-white">Nội dung thông báo</div>
+            <div class="toast-body text-white"></div>
         </div>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div>
             &copy; 2025 - todolist - paradev
         </div>
     </footer>
