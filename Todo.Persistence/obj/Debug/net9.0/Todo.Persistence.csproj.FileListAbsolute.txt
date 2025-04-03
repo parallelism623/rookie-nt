@@ -1,0 +1,17 @@
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.csproj.AssemblyReference.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.AssemblyInfoInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.AssemblyInfo.cs
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Persistence.deps.json
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Persistence.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Persistence.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Application.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Application.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Domain.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Per.1B93005A.Up2Date
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\refint\Todo.Persistence.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\ref\Todo.Persistence.dll

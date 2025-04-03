@@ -1,0 +1,15 @@
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.csproj.AssemblyReference.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.AssemblyInfoInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.AssemblyInfo.cs
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.csproj.CoreCompileInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Application.deps.json
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Application.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Application.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Domain.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.App.468A55F7.Up2Date
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\refint\Todo.Application.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\ref\Todo.Application.dll

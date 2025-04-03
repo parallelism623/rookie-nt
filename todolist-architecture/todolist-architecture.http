@@ -1,0 +1,18 @@
+@todolist_architecture_HostAddress = http://localhost:5058
+
+PUT {{todolist_architecture_HostAddress}}/todo-items/
+Accept: application/json
+{
+  "model": {
+      "id": "00000000-0000-0000-0000-000000000110",
+      "title": "Task #11",
+      "description": "Investigate memory leak",
+      "point": 7,
+      "assignee": "charlie",
+      "dueFrom": "2025-04-04T18:25:59.0845764+07:00",
+      "dueTo": "2025-04-07T18:25:59.0845765+07:00",
+      "priority": 3,
+      "status": 0
+  }
+}
+###

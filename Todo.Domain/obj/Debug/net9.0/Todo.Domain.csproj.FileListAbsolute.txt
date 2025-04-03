@@ -1,0 +1,11 @@
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\bin\Debug\net9.0\Todo.Domain.deps.json
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\bin\Debug\net9.0\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\bin\Debug\net9.0\Todo.Domain.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.AssemblyInfoInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.AssemblyInfo.cs
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\refint\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\ref\Todo.Domain.dll
