@@ -1,7 +1,7 @@
 ﻿using Todo.Application.Commons.Models;
 using Todo.Domain.Entities;
 
-namespace Todo.Application;
+namespace Todo.Application.Services;
 public interface ITodoItemService
 {
     List<TodoItem> TodoItems { get; set; }

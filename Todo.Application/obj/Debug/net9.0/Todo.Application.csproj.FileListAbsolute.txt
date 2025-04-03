@@ -13,3 +13,6 @@ C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\refint\Todo.Application.dll
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.pdb
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\ref\Todo.Application.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\bin\Debug\net9.0\Todo.Contract.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Application\obj\Debug\net9.0\Todo.Application.sourcelink.json

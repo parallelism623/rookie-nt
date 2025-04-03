@@ -9,3 +9,4 @@ C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\T
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\refint\Todo.Domain.dll
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.pdb
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\ref\Todo.Domain.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Domain\obj\Debug\net9.0\Todo.Domain.sourcelink.json

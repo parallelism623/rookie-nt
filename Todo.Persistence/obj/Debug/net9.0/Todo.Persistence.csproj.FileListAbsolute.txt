@@ -15,3 +15,6 @@ C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\refint\Todo.Persistence.dll
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.pdb
 C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\ref\Todo.Persistence.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\bin\Debug\net9.0\Todo.Contract.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Persistence\obj\Debug\net9.0\Todo.Persistence.sourcelink.json

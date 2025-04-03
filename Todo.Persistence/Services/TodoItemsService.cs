@@ -1,10 +1,11 @@
 ﻿using Mapster;
-using Todo.Application;
 using Todo.Application.Commons.Exceptions;
 using Todo.Application.Commons.Models;
+using Todo.Application.Services;
+using Todo.Contract.Messages;
 using Todo.Domain.Entities;
 
-namespace Todo.Persistence
+namespace Todo.Persistence.Services
 {
     public class TodoItemService : ITodoItemService
     {
@@ -175,10 +176,10 @@ namespace Todo.Persistence
         {
             var todoItems = TodoItems.Where(c => itemIds.Contains(c.Id));
 
-            
-            if(todoItems.Count() != itemIds.Count())
+
+            if (todoItems.Count() != itemIds.Count())
             {
-                throw new Exception("Không thể xóa item không tồn tại");
+                throw new Exception(MessageException.ItemNotBeExistsCannotDelete);
             }
 
             TodoItems.RemoveAll(t => todoItems.Where(c => c.Id == t.Id).Any());
@@ -189,7 +190,7 @@ namespace Todo.Persistence
             var item = TodoItems.Where(t => t.Id == Id).FirstOrDefault();
             if (item == null)
             {
-                throw new Exception("Không thể xóa item không tồn tại");
+                throw new Exception(MessageException.ItemNotBeExistsCannotDelete);
             }
             TodoItems.Remove(item!);
         }
@@ -202,16 +203,16 @@ namespace Todo.Persistence
         public TodoItemResponse GetById(Guid Id)
         {
             return TodoItems.Where(c => c.Id == Id).FirstOrDefault().Adapt<TodoItemResponse>()
-                ?? throw new BadRequestException("Item không tồn tại");
+                ?? throw new BadRequestException(MessageException.ItemNotExists);
         }
 
         public void Update(TodoItemUpdateRequest item)
         {
             var itemTodo = TodoItems.Where(c => c.Id == item.Id).FirstOrDefault();
-            if(itemTodo == null)
+            if (itemTodo == null)
             {
-                throw new BadRequestException("Không tồn tại item");
-            }    
+                throw new BadRequestException(MessageException.ItemNotExists);
+            }
             item.Adapt(itemTodo);
         }
     }

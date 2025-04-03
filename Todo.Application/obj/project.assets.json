@@ -119,6 +119,16 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Todo.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Todo.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Todo.Contract.dll": {}
+        }
+      },
       "Todo.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -284,6 +294,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Todo.Contract/1.0.0": {
+      "type": "project",
+      "path": "../Todo.Contract/Todo.Contract.csproj",
+      "msbuildProject": "../Todo.Contract/Todo.Contract.csproj"
+    },
     "Todo.Domain/1.0.0": {
       "type": "project",
       "path": "../Todo.Domain/Todo.Domain.csproj",
@@ -296,6 +311,7 @@
       "FluentValidation.AspNetCore >= 11.3.0",
       "Mapster >= 7.4.0",
       "MediatR >= 12.5.0",
+      "Todo.Contract >= 1.0.0",
       "Todo.Domain >= 1.0.0"
     ]
   },
@@ -332,6 +348,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "C:\\Users\\hieud\\source\\repos\\todolist-architecture\\Todo.Contract\\Todo.Contract.csproj": {
+              "projectPath": "C:\\Users\\hieud\\source\\repos\\todolist-architecture\\Todo.Contract\\Todo.Contract.csproj"
+            },
             "C:\\Users\\hieud\\source\\repos\\todolist-architecture\\Todo.Domain\\Todo.Domain.csproj": {
               "projectPath": "C:\\Users\\hieud\\source\\repos\\todolist-architecture\\Todo.Domain\\Todo.Domain.csproj"
             }

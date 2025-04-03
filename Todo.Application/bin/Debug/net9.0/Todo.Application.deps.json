@@ -12,6 +12,7 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "Mapster": "7.4.0",
           "MediatR": "12.5.0",
+          "Todo.Contract": "1.0.0",
           "Todo.Domain": "1.0.0"
         },
         "runtime": {
@@ -90,6 +91,14 @@
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.0": {},
+      "Todo.Contract/1.0.0": {
+        "runtime": {
+          "Todo.Contract.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Todo.Domain/1.0.0": {
         "runtime": {
           "Todo.Domain.dll": {
@@ -161,6 +170,11 @@
       "sha512": "sha512-cjWrLkJXK0rs4zofsK4bSdg+jhDLTaxrkXu4gS6Y7MAlCvRyNNgwY/lJi5RDlQOnSZweHqoyvgvbdvQsRIW+hg==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+    },
+    "Todo.Contract/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Todo.Domain/1.0.0": {
       "type": "project",

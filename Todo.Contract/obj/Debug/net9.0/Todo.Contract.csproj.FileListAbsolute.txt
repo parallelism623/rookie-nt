@@ -1,0 +1,12 @@
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\bin\Debug\net9.0\Todo.Contract.deps.json
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\bin\Debug\net9.0\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\bin\Debug\net9.0\Todo.Contract.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.AssemblyInfoInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.AssemblyInfo.cs
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.csproj.CoreCompileInputs.cache
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.sourcelink.json
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\refint\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\Todo.Contract.pdb
+C:\Users\hieud\source\repos\todolist-architecture\Todo.Contract\obj\Debug\net9.0\ref\Todo.Contract.dll
