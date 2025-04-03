@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using Todo.Application;
+using System.Net;
 using Todo.Application.Commons.Exceptions;
 using Todo.Application.Commons.Models;
+using Todo.Application.Services;
+using Todo.Contract.Messages;
 
-namespace todolist_architecture;
+namespace todolist_architecture.Controllers;
 
 
 [ApiController]
-public class TodoItemsController : ControllerBase
+public class TodoItemsController : ApiControllerBase
 {
     private readonly ITodoItemService _services;
     public TodoItemsController(ITodoItemService services)
@@ -37,7 +39,7 @@ public class TodoItemsController : ControllerBase
     {
         ValidationModel();
         _services.Add(dto);
-        return Ok("Thêm mới sản phẩm thành công");
+        return Success(MessageApplication.TodoItemBeAddedSuccess, HttpStatusCode.OK.ToString());
     }
     [HttpPost]
     [Route("todo-items/bulk-add")]
@@ -45,7 +47,7 @@ public class TodoItemsController : ControllerBase
     {
         ValidationModel();
         _services.BulkAdd(dtos);
-        return Ok("Thêm mới sản phẩm thành công");
+        return Success(MessageApplication.TodoItemBeAddedSuccess, HttpStatusCode.OK.ToString());
     }
 
     [HttpPut]
@@ -54,14 +56,14 @@ public class TodoItemsController : ControllerBase
     {
         ValidationModel();
         _services.Update(model);
-        return Ok("Cập nhật sản phẩm thành công");
+        return Success(MessageApplication.TodoItemBeUpdatedSuccess, HttpStatusCode.OK.ToString());
     }
     [HttpDelete]
     [Route("todo-items/{id}")]
     public IActionResult Delete(Guid id)
     {
         _services.Delete(id);
-        return Ok("Xóa sản phẩm thành công");
+        return Success(MessageApplication.TodoItemBeDeletedSuccess, HttpStatusCode.OK.ToString());
     }
 
     [HttpDelete]
@@ -70,16 +72,7 @@ public class TodoItemsController : ControllerBase
     {
         ValidationModel();
         _services.BulkDelete(itemIds);
-        return Ok("Xóa các sản phẩm thành công");
+        return Success(MessageApplication.TodoItemBeDeletedSuccess, HttpStatusCode.OK.ToString());
     }
-    private void ValidationModel()
-    {
-        if (!ModelState.IsValid)
-        {
-            throw new ValidationException(ModelState
-                .Where(x => x.Value.Errors.Count > 0)
-                .Select(x => x.Value.Errors.First().ErrorMessage)
-                .FirstOrDefault());
-        }
-    }
+
 }

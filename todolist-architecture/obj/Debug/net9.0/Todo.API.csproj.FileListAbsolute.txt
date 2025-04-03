@@ -58,3 +58,6 @@ C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\obj\Debu
 C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\bin\Debug\net9.0\FluentValidation.dll
 C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
 C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\bin\Debug\net9.0\Todo.Contract.dll
+C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\bin\Debug\net9.0\Todo.Contract.pdb
+C:\Users\hieud\source\repos\todolist-architecture\todolist-architecture\obj\Debug\net9.0\Todo.API.sourcelink.json

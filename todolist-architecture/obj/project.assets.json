@@ -411,6 +411,7 @@
           "FluentValidation.AspNetCore": "11.3.0",
           "Mapster": "7.4.0",
           "MediatR": "12.5.0",
+          "Todo.Contract": "1.0.0",
           "Todo.Domain": "1.0.0"
         },
         "compile": {
@@ -418,6 +419,16 @@
         },
         "runtime": {
           "bin/placeholder/Todo.Application.dll": {}
+        }
+      },
+      "Todo.Contract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Todo.Contract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Todo.Contract.dll": {}
         }
       },
       "Todo.Domain/1.0.0": {
@@ -1245,6 +1256,11 @@
       "type": "project",
       "path": "../Todo.Application/Todo.Application.csproj",
       "msbuildProject": "../Todo.Application/Todo.Application.csproj"
+    },
+    "Todo.Contract/1.0.0": {
+      "type": "project",
+      "path": "../Todo.Contract/Todo.Contract.csproj",
+      "msbuildProject": "../Todo.Contract/Todo.Contract.csproj"
     },
     "Todo.Domain/1.0.0": {
       "type": "project",

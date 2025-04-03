@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "GetAll",
     "RelativePath": "todo-items",
     "HttpMethod": "GET",
@@ -10,7 +10,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Create",
     "RelativePath": "todo-items",
     "HttpMethod": "POST",
@@ -26,7 +26,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Update",
     "RelativePath": "todo-items",
     "HttpMethod": "PUT",
@@ -42,7 +42,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Delete",
     "RelativePath": "todo-items",
     "HttpMethod": "DELETE",
@@ -58,7 +58,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "GetById",
     "RelativePath": "todo-items/{id}",
     "HttpMethod": "GET",
@@ -74,7 +74,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Delete",
     "RelativePath": "todo-items/{id}",
     "HttpMethod": "DELETE",
@@ -90,7 +90,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "todolist_architecture.TodoItemsController",
+    "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Create",
     "RelativePath": "todo-items/bulk-add",
     "HttpMethod": "POST",
