@@ -14,14 +14,11 @@ namespace aspnetcore.Services.Implements
     {
         private readonly IAuthRepository _authRepository;
         private readonly ILogger<AuthService> _logger;
-        //private readonly ILabels _labels;
         public AuthService(IAuthRepository authRepository, 
-            ILogger<AuthService> logger
-            /*ILabels labels*/)
+            ILogger<AuthService> logger)
         {
             _authRepository = authRepository;
             _logger = logger;
-            //_labels = labels;   
         }
 
         public async ValueTask<LoginResponse> LoginAsync(LoginRequest request)

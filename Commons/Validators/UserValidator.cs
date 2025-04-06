@@ -16,19 +16,19 @@ namespace aspnetcore.Commons.Validators
             if (string.IsNullOrEmpty(request.Username) || string.IsNullOrEmpty(request.Password))
             {
                 throw new BadRequestException(Labels.UsernameOrPasswordEmpty);
-            } 
-            if(request.Password.Length < 8 || request.Password.Length > 32)
+            }
+            if (request.Password.Length < 8 || request.Password.Length > 32)
             {
                 throw new BadRequestException(Labels.PasswordLengthShouldInRange);
-            }   
-            if(!Regex.IsMatch(request.Username, _patternUsername))
+            }
+            if (!Regex.IsMatch(request.Username, _patternUsername))
             {
                 throw new BadRequestException(Labels.UsernameInvalid);
-            }    
-            if(!Regex.IsMatch(request.Password, _patternPassword))
+            }
+            if (!Regex.IsMatch(request.Password, _patternPassword))
             {
                 throw new BadRequestException(Labels.PasswordShouldBePattern);
-            }    
+            }
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using aspnetcore;
 using aspnetcore.Middlewares;
-using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.AspNetCore.Localization;
 using Serilog;
 using Serilog.Events;
-using Serilog.Formatting.Json;
-using System.Globalization;
+using Serilog.Formatting.Compact;
 
 try
 {
@@ -23,14 +20,14 @@ try
         .MinimumLevel.Override("System", LogEventLevel.Warning) 
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .WriteTo.File(
-            new JsonFormatter(),
+            new CompactJsonFormatter(),
             Path.Combine(logDirectory, $"log_{DateTime.Now:yyyyMMdd}.json"),
             rollingInterval: RollingInterval.Day
         )
         .Enrich.FromLogContext()
         .CreateLogger();
     #endregion SERILOG_CONFIG
-    Log.Information("Starting app...");
+
     builder.Host.UseSerilog();
     builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
     builder.Services.AddApplicationDependencyInjection();
@@ -44,6 +41,7 @@ try
     app.UseRouting();
     app.MapControllers();
     app.Run();
+    
 
 }
 catch(Exception ex)

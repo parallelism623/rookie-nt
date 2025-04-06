@@ -11,7 +11,7 @@
         public DateTime? ModifiedDate { get; set; }
         public Guid CreateBy { get; set; }
         public Guid? ModifiedBy { get; set; }
-        public string PId = Guid.NewGuid().ToString();
+        public string PId { get; set; } = Guid.NewGuid().ToString();
     }
     public class LoginRequest
     {

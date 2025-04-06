@@ -19,9 +19,7 @@ namespace aspnetcore.Middlewares
         {
             
 
-            _logger.LogError(exception.Message);
-
-  
+            _logger.LogError(exception, exception.Message);
             var statusCode = GetExceptionResponseStatusCode(exception);
             context.Response.StatusCode = statusCode;
             context.Response.ContentType = "application/json";

@@ -35,19 +35,19 @@ namespace aspnetcore.Repositories.Implements
         public async Task<User?> GetByIdAsync(Guid id)
         {
             await Task.Delay(GetRandomMiliSecondsDelay());
-            return _memoryDbContext.Users?.Where(u => u.Id == id)?.FirstOrDefault();
+            return _memoryDbContext.Users?.FirstOrDefault(u => u.Id == id);
         }
 
         public async Task<User?> GetByUsernameAsync(string username)
         {
             await Task.Delay(GetRandomMiliSecondsDelay());
-            return _memoryDbContext.Users?.Where(u => u.Username == username)?.FirstOrDefault();
+            return _memoryDbContext.Users?.FirstOrDefault(u => u.Username == username);
         }
 
         public async Task Update(User entity)
         {
             await Task.Delay(GetRandomMiliSecondsDelay());
-            var user = _memoryDbContext.Users.Where(u => u.Id == entity.Id).FirstOrDefault();
+            var user = _memoryDbContext.Users.FirstOrDefault(u => u.Id == entity.Id);
             user = entity; 
         }
 

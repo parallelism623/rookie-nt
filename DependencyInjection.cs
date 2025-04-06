@@ -23,7 +23,6 @@ namespace aspnetcore
         {
             return services.AddScoped<IAuthRepository, AuthRepository>()
                            .AddScoped<IEncryptAlgorithm, RSAEncryptAlgorithm>();
-                           //.AddScoped<ILabels, Labels>(); 
         }
 
         public static IServiceCollection AddServicesDependencyInjection(this IServiceCollection services)
