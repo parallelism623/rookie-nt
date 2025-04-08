@@ -1,4 +1,5 @@
-﻿using Rookies.Contract.Models;
+﻿using Rookies.Contract.Messages;
+using Rookies.Contract.Models;
 using Rookies.Domain.Entities;
 using Rookies.Domain.Repositories;
 
@@ -17,7 +18,7 @@ public class CreatePersonCommandHandler(IPersonRepository personRepository,
 
         personRepository.Add(person);
 
-        logger.LogInformation("Person with id {Id} created.", person.Id);
+        logger.LogInformation(LoggingTemplateMessages.PersonCreatedWithIdSuccess, person.Id);
 
         await personRepository.UnitOfWork.SaveChangesAsync();
     }

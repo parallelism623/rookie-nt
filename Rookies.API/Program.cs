@@ -1,7 +1,8 @@
 using Rookies.API;
 using Rookies.API.Middlewares;
-using Rookies.API.Presentation;
+using Rookies.API.Presentation.Controllers;
 using Rookies.Application;
+using Rookies.Contract;
 using Rookies.Persistence;
 using Serilog;
 
@@ -15,9 +16,10 @@ try
     builder.Services.AddOpenApi();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
-    builder.Services.AddPersistenceService(builder.Configuration)
+    builder.Services.ConfigurePersistenceLayer(builder.Configuration)
                     .ConfigureApiController()
-                    .ConfigureMediator();
+                    .ConfigureApplicationLayer()
+                    .ConfigureContractLayer();
     builder.Services.AddControllers();
     builder.Services.AddExceptionHandler<ExceptionHandlerMiddleware>();
     var app = builder.Build();

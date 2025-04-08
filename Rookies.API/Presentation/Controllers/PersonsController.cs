@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Rookies.Application.UseCases.Persons.Commands;
 using Rookies.Application.UseCases.Persons.Queries;
+using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
+using Rookies.Contract.Shared;
 
 namespace Rookies.API.Presentation.Controllers;
 
@@ -22,7 +24,7 @@ public class PersonsController : ApiBaseController
 
         var personQueryResponse = await _sender.Send(personQueryRequest);
 
-        return Ok(personQueryResponse);
+        return GetResponse(personQueryResponse, ResponseMessages.PersonsQuerySuccess);
     }
 
     [HttpPost]
@@ -32,7 +34,7 @@ public class PersonsController : ApiBaseController
 
         await _sender.Send(personCreateCommandModel);
 
-        return Ok("Tạo mới người dùng thành công");
+        return GetResponse(ResponseMessages.PersonCreatedSuccess);
     }
 
     [HttpDelete("{id}")]
@@ -42,7 +44,7 @@ public class PersonsController : ApiBaseController
 
         await _sender.Send(personDeleteCommandModel);
 
-        return Ok("Xóa người dùng thành công");
+        return GetResponse(ResponseMessages.PersonDeletedSuccess);
     }
 
     [HttpPut]
@@ -52,6 +54,7 @@ public class PersonsController : ApiBaseController
 
         await _sender.Send(personUpdateRequest);
 
-        return Ok("Cập nhật người dùng thành công");
+        return GetResponse(ResponseMessages.PersonUpdatedSuccess);
     }
+
 }

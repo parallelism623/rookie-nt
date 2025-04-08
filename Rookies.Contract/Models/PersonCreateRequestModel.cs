@@ -1,14 +1,15 @@
 ﻿using FluentValidation;
+using Rookies.Contract.Messages;
 using Rookies.Domain.Enums;
 
 namespace Rookies.Contract.Models;
 public class PersonCreateRequestModel
 {
-    public required string FirstName { get; set; }
-    public required string LastName { get; set; }
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
     public DateTime DateOfBirth { get; set; }
-    public required int Gender { get; set; }
-    public required string BirthPlace { get; set; }
+    public int Gender { get; set; }
+    public string? BirthPlace { get; set; }
     public string? Address { get; set; }
 }
 
@@ -16,17 +17,26 @@ public class PersonCreateRequestModelValidator : AbstractValidator<PersonCreateR
 {
     public PersonCreateRequestModelValidator()
     {
-       RuleFor(x => x.FirstName.Length).ExclusiveBetween(1, 50)
-             .WithMessage("First name must be between 1 and 50 characters.");
-       RuleFor(x => x.LastName.Length).ExclusiveBetween(1, 50)
-            .WithMessage("Last name must be between 1 and 50 characters.");
-       RuleFor(x => x.Gender).Must(g => Enum.IsDefined(typeof(PersonGender), g))
-            .WithMessage("Gender is invalid");
-       RuleFor(x => x.FirstName).Matches(@"^[\p{L}\p{M}\s.'-]+$")
-            .WithMessage("First name is invalid");
-       RuleFor(x => x.LastName).Matches(@"^[\p{L}\p{M}\s.'-]+$")
-            .WithMessage("Last name is invalid");
-       RuleFor(x => x.BirthPlace.Length).ExclusiveBetween(1, 100)
-            .WithMessage("Last name must be between 1 and 100 characters.");
+        RuleFor(x => x.FirstName).NotNull()
+            .MinimumLength(1)
+            .WithMessage(ErrorMessages.ErrorMessageInvalidLengthFirstName)
+            .MaximumLength(50)
+            .WithMessage(ErrorMessages.ErrorMessageInvalidLengthFirstName);
+        RuleFor(x => x.LastName).NotNull()
+            .MinimumLength(1)
+            .WithMessage(ErrorMessages.ErrorMessageInvalidLengthLastName)
+            .MaximumLength(50)
+            .WithMessage(ErrorMessages.ErrorMessageInvalidLengthLastName);
+        RuleFor(x => x.Gender).Must(g => Enum.IsDefined(typeof(PersonGender), g))
+             .WithMessage(ErrorMessages.GenderInvalid);
+        RuleFor(x => x.FirstName).Matches(@"^[\p{L}\p{M}\s.'-]+$")
+             .WithMessage(ErrorMessages.FirstNameInvalid);
+        RuleFor(x => x.LastName).Matches(@"^[\p{L}\p{M}\s.'-]+$")
+             .WithMessage(ErrorMessages.LastNameInvalid);
+        RuleFor(x => x.BirthPlace).NotNull()
+             .MinimumLength(1)
+             .WithMessage(ErrorMessages.BirthPlaceInvalidLength)
+             .MaximumLength(100)
+             .WithMessage(ErrorMessages.BirthPlaceInvalidLength);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Rookies.Contract.Models;
+﻿using Rookies.Contract.Exceptions;
+using Rookies.Contract.Messages;
+using Rookies.Contract.Models;
 using Rookies.Domain.Entities;
 using Rookies.Domain.Repositories;
 
@@ -14,11 +16,20 @@ public class UpdatePersonCommandHandler(IPersonRepository personRepository,
 
     public async Task Handle(UpdatePersonCommand request, CancellationToken cancellationToken)
     {
-        var person = request.Model.Adapt<Person>();
+        if(request.Model.Id == null)
+        {
+            throw new BadRequestException(ErrorMessages.PersonIdRequire);
+        }
+        var person = await personRepository.GetByIdAsync(request.Model.Id ?? Guid.Empty);
 
+        if (person == null)
+        {
+                throw new BadRequestException(string.Format(ErrorMessages.PersonNotFoundById, request.Model.Id));
+        }
+        person = request.Model.Adapt(person);
         personRepository.Update(person);
 
-        logger.LogInformation("Person with id {Id} updated - Data {@Data}.", person.Id,  request.Model);
+        logger.LogInformation(LoggingTemplateMessages.PersonUpdatedWithDataSuccess, person.Id,  request.Model);
 
         await personRepository.UnitOfWork.SaveChangesAsync();
     }

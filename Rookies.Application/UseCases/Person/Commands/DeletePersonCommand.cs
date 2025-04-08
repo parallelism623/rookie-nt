@@ -1,5 +1,6 @@
 ﻿
 using Rookies.Contract.Exceptions;
+using Rookies.Contract.Messages;
 using Rookies.Domain.Repositories;
 
 namespace Rookies.Application.UseCases.Persons.Commands;
@@ -15,11 +16,11 @@ public class PersonDeleteCommandHandler(IPersonRepository personRepository,
         var person = await personRepository.GetByIdAsync(request.Id);
         if (person is null)
         {
-            throw new NotFoundException($"Person with id {request.Id} not found.");
+            throw new NotFoundException(string.Format(ErrorMessages.PersonNotFoundById, request.Id));
         }
         personRepository.Delete(person);
 
-        logger.LogInformation("Person with id {Id} deleted.", request.Id);
+        logger.LogInformation(LoggingTemplateMessages.PersonDeletedWithIdSuccess, request.Id);
 
         await personRepository.UnitOfWork.SaveChangesAsync();
     }

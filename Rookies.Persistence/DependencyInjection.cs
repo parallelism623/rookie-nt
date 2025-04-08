@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Rookies.Persistence;
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPersistenceService(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection ConfigurePersistenceLayer(this IServiceCollection services, IConfiguration config)
     {
         services.AddDbContext<RookiesDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnection")));

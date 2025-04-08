@@ -1,4 +1,5 @@
-﻿using Rookies.Contract.Models;
+﻿using Rookies.Contract.Messages;
+using Rookies.Contract.Models;
 using Rookies.Contract.Shared;
 using Rookies.Domain.Repositories;
 
@@ -16,7 +17,7 @@ public class GetPersonsQueryHandler(IPersonRepository personRepository,
     {
         var persons = await personRepository.GetAsync(request.QueryParameters);
 
-        logger.LogInformation("Retrieved {Count} persons.", persons.TotalCount);
+        logger.LogInformation(LoggingTemplateMessages.PersonQuerySuccess, persons.TotalCount);
 
         return persons.Adapt<PagingResult<PersonResponseModel>>();
     }
