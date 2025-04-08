@@ -16,9 +16,12 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 var app = builder.Build();
 app.UseExceptionHandler(_ => { });
 
-app.UseSwagger();
-app.UseSwaggerUI(); 
-  
+if(app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 
 
 

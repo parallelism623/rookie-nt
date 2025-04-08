@@ -11,7 +11,7 @@ public class TodoItemUpdateRequestValidator : AbstractValidator<TodoItemUpdateRe
         RuleFor(x => x.Id).NotEmpty().WithMessage(MessageValidation.IdCannotEmpty);
         RuleFor(x => x.Title).NotEmpty().WithMessage(MessageValidation.TitleCannotEmpty);
         RuleFor(x => x.Point).InclusiveBetween(1, 10).WithMessage(MessageValidation.PointShouldBeInRange);
-        RuleFor(x => x.Priority).Must(p => Enum.IsDefined(typeof(PriorityEnum), p)).WithMessage(MessageValidation.PointShouldBeInRange);
+        RuleFor(x => x.Priority).Must(p => Enum.IsDefined(typeof(PriorityEnum), p)).WithMessage(MessageValidation.PriorityShouldBeInRange);
 
     }
 }

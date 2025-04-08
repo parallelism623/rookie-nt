@@ -30,7 +30,7 @@ public class ApiControllerBase : ControllerBase
     {
         var error = ModelState
                 .Where(x => x.Value?.Errors.Count > 0)
-                .Select(x => x.Value?.Errors.First().ErrorMessage)
+                .Select(x => x.Value?.Errors?.FirstOrDefault()?.ErrorMessage)
                 .FirstOrDefault();
         if(!string.IsNullOrEmpty(error))
             throw new ValidationException(error);

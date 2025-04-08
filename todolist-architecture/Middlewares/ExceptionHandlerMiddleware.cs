@@ -35,20 +35,20 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
     }
 
 
-    private int GetExceptionResponseStatusCode(Exception exception)
+    private static int GetExceptionResponseStatusCode(Exception exception)
     {
         return exception switch
         {
             BadRequestException => 400,
             NotFoundException => 404,
-            ValidationException => 422,
+            ValidationException => 400,
             UnAuthorizedException => 401,
             InternalServerErrorException => 500,
             _ => 400
         };
     }
 
-    private string GetExceptionResponseMessage(Exception exception)
+    private static string GetExceptionResponseMessage(Exception exception)
     {
         return exception switch
         {

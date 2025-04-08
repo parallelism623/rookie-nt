@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Todo.Application.Commons.Models;
+﻿namespace Todo.Application.Commons.Models;
 public class TodoItemResponse
 {
     public Guid Id { get; set; }

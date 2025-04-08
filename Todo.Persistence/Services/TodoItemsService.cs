@@ -162,14 +162,14 @@ namespace Todo.Persistence.Services
                 Priority = 3
             }
         };
-        public void Add(TodoItemCreateRequest model)
+        public void Add(TodoItemCreateRequest item)
         {
-            TodoItems.Add(model.Adapt<TodoItem>());
+            TodoItems.Add(item.Adapt<TodoItem>());
         }
 
-        public void BulkAdd(IEnumerable<TodoItemCreateRequest> models)
+        public void BulkAdd(IEnumerable<TodoItemCreateRequest> items)
         {
-            TodoItems.AddRange(models.ToList().Adapt<List<TodoItem>>());
+            TodoItems.AddRange(items.ToList().Adapt<List<TodoItem>>());
         }
 
         public void BulkDelete(IEnumerable<Guid> itemIds)
@@ -179,18 +179,18 @@ namespace Todo.Persistence.Services
 
             if (todoItems.Count() != itemIds.Count())
             {
-                throw new Exception(MessageException.ItemNotBeExistsCannotDelete);
+                throw new BadRequestException(MessageException.ItemNotBeExistsCannotDelete);
             }
 
-            TodoItems.RemoveAll(t => todoItems.Where(c => c.Id == t.Id).Any());
+            TodoItems.RemoveAll(t => todoItems.Any(c => c.Id == t.Id));
         }
 
-        public void Delete(Guid Id)
+        public void Delete(Guid id)
         {
-            var item = TodoItems.Where(t => t.Id == Id).FirstOrDefault();
+            var item = TodoItems.FirstOrDefault(t => t.Id == id);
             if (item == null)
             {
-                throw new Exception(MessageException.ItemNotBeExistsCannotDelete);
+                throw new BadRequestException(MessageException.ItemNotBeExistsCannotDelete);
             }
             TodoItems.Remove(item!);
         }
@@ -200,15 +200,15 @@ namespace Todo.Persistence.Services
             return TodoItems.Adapt<List<TodoItemResponse>>();
         }
 
-        public TodoItemResponse GetById(Guid Id)
+        public TodoItemResponse GetById(Guid id)
         {
-            return TodoItems.Where(c => c.Id == Id).FirstOrDefault().Adapt<TodoItemResponse>()
+            return TodoItems.FirstOrDefault(c => c.Id == id).Adapt<TodoItemResponse>()
                 ?? throw new BadRequestException(MessageException.ItemNotExists);
         }
 
         public void Update(TodoItemUpdateRequest item)
         {
-            var itemTodo = TodoItems.Where(c => c.Id == item.Id).FirstOrDefault();
+            var itemTodo = TodoItems.FirstOrDefault(c => c.Id == item.Id);
             if (itemTodo == null)
             {
                 throw new BadRequestException(MessageException.ItemNotExists);

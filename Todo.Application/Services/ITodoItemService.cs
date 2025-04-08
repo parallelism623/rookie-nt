@@ -5,9 +5,9 @@ namespace Todo.Application.Services;
 public interface ITodoItemService
 {
     List<TodoItem> TodoItems { get; set; }
-    TodoItemResponse GetById(Guid Id);
+    TodoItemResponse GetById(Guid id);
     List<TodoItemResponse> GetAll();
-    void Delete(Guid Id);
+    void Delete(Guid id);
     void Update(TodoItemUpdateRequest item);
     void Add(TodoItemCreateRequest item);
     void BulkAdd(IEnumerable<TodoItemCreateRequest> items);

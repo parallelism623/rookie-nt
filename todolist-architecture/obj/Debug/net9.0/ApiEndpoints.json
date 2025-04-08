@@ -2,7 +2,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "GetAll",
-    "RelativePath": "todo-items",
+    "RelativePath": "TodoItems",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -12,7 +12,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Create",
-    "RelativePath": "todo-items",
+    "RelativePath": "TodoItems",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -28,7 +28,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Update",
-    "RelativePath": "todo-items",
+    "RelativePath": "TodoItems",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -44,7 +44,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Delete",
-    "RelativePath": "todo-items",
+    "RelativePath": "TodoItems",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -60,7 +60,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "GetById",
-    "RelativePath": "todo-items/{id}",
+    "RelativePath": "TodoItems/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -76,7 +76,7 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Delete",
-    "RelativePath": "todo-items/{id}",
+    "RelativePath": "TodoItems/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -92,14 +92,14 @@
   {
     "ContainingType": "todolist_architecture.Controllers.TodoItemsController",
     "Method": "Create",
-    "RelativePath": "todo-items/bulk-add",
+    "RelativePath": "TodoItems/bulk-add",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "dtos",
-        "Type": "System.Collections.Generic.List\u00601[[Todo.Application.Commons.Models.TodoItemCreateRequest, Todo.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Todo.Application.Commons.Models.TodoItemBulkCreateRequest",
         "IsRequired": true
       }
     ],

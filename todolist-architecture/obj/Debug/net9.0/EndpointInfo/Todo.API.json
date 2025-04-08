@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/todo-items": {
+    "/TodoItems": {
       "get": {
         "tags": [
           "TodoItems"
@@ -116,7 +116,7 @@
         }
       }
     },
-    "/todo-items/{id}": {
+    "/TodoItems/{id}": {
       "get": {
         "tags": [
           "TodoItems"
@@ -160,7 +160,7 @@
         }
       }
     },
-    "/todo-items/bulk-add": {
+    "/TodoItems/bulk-add": {
       "post": {
         "tags": [
           "TodoItems"
@@ -169,26 +169,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TodoItemCreateRequest"
-                }
+                "$ref": "#/components/schemas/TodoItemBulkCreateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TodoItemCreateRequest"
-                }
+                "$ref": "#/components/schemas/TodoItemBulkCreateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TodoItemCreateRequest"
-                }
+                "$ref": "#/components/schemas/TodoItemBulkCreateRequest"
               }
             }
           }
@@ -203,6 +194,19 @@
   },
   "components": {
     "schemas": {
+      "TodoItemBulkCreateRequest": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TodoItemCreateRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "TodoItemCreateRequest": {
         "required": [
           "title"
