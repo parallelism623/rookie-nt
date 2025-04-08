@@ -11,6 +11,9 @@ public class PersonCreateRequestModel
     public int Gender { get; set; }
     public string? BirthPlace { get; set; }
     public string? Address { get; set; }
+    
+    public string? Email { get; set; }
+    public string? PhoneNumber { get; set; }
 }
 
 public class PersonCreateRequestModelValidator : AbstractValidator<PersonCreateRequestModel>
@@ -38,5 +41,11 @@ public class PersonCreateRequestModelValidator : AbstractValidator<PersonCreateR
              .WithMessage(ErrorMessages.BirthPlaceInvalidLength)
              .MaximumLength(100)
              .WithMessage(ErrorMessages.BirthPlaceInvalidLength);
+        RuleFor(x => x.Email)
+            .NotEmpty().WithMessage(ErrorMessages.EmailShouldNotBeEmpty)
+            .EmailAddress().WithMessage(ErrorMessages.EmailAddressInvalid);
+        RuleFor(x => x.PhoneNumber)
+            .NotEmpty().WithMessage(ErrorMessages.PhoneNumberShouldNotBeEmpty)
+            .Matches(@"^\+?[0-9]{10,15}$").WithMessage(ErrorMessages.PhoneNumberInvalid);
     }
 }

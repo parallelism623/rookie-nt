@@ -39,7 +39,7 @@ public class PersonRepository : BaseRepository<Person, Guid>, IPersonRepository
         if (!string.IsNullOrEmpty(queryParameters.Name))
         {
             persons = persons.Where(p => p.FirstName.Contains(queryParameters.Name)
-                                         || p.LastName.Contains(queryParameters.Name));
+                                      || p.LastName.Contains(queryParameters.Name));
         }
         if (queryParameters.Gender != null)
         {

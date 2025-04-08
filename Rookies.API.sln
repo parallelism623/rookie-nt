@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15B2F8D8-E50A-4ED4-AD7C-B0C188177487}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.env = .env
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
@@ -20,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rookies.Infrastructure", "Rookies.Infrastructure\Rookies.Infrastructure.csproj", "{B20535FB-490F-4A65-91BD-4A4147D50003}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rookies.Contract", "Rookies.Contract\Rookies.Contract.csproj", "{8043F9FD-D126-48A9-9109-D87ACE0A63C8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3ABE89C5-A623-4929-AC09-B21C381C7D29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,8 +54,15 @@ Global
 		{8043F9FD-D126-48A9-9109-D87ACE0A63C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8043F9FD-D126-48A9-9109-D87ACE0A63C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8043F9FD-D126-48A9-9109-D87ACE0A63C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ABE89C5-A623-4929-AC09-B21C381C7D29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ABE89C5-A623-4929-AC09-B21C381C7D29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ABE89C5-A623-4929-AC09-B21C381C7D29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ABE89C5-A623-4929-AC09-B21C381C7D29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3ABE89C5-A623-4929-AC09-B21C381C7D29} = {15B2F8D8-E50A-4ED4-AD7C-B0C188177487}
 	EndGlobalSection
 EndGlobal

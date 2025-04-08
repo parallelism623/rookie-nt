@@ -1,7 +1,10 @@
-﻿using Rookies.Contract.Messages;
+﻿using Rookies.Application.Services.Crypto;
+using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
 using Rookies.Contract.Shared;
+using Rookies.Domain.Entities;
 using Rookies.Domain.Repositories;
+using Rookies.Infrastructure.Services.Crypto;
 
 namespace Rookies.Application.UseCases.Persons.Queries;
 public record GetPersonsQuery(PersonQueryParameters QueryParameters) 
@@ -9,16 +12,43 @@ public record GetPersonsQuery(PersonQueryParameters QueryParameters)
 { }
 
 public class GetPersonsQueryHandler(IPersonRepository personRepository,
-                                    ILogger<GetPersonsQueryHandler> logger)
+                                    ILogger<GetPersonsQueryHandler> logger,
+                                    ICryptoServiceStrategy cryptoServiceStrategy)
     : IRequestHandler<GetPersonsQuery, PagingResult<PersonResponseModel>>
 {
-
     public async Task<PagingResult<PersonResponseModel>> Handle(GetPersonsQuery request, CancellationToken cancellationToken)
     {
+        SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
+
         var persons = await personRepository.GetAsync(request.QueryParameters);
 
+        DecryptPersonsInfo(persons.Items);
         logger.LogInformation(LoggingTemplateMessages.PersonQuerySuccess, persons.TotalCount);
 
         return persons.Adapt<PagingResult<PersonResponseModel>>();
     }
+    private void SetEncryptionAlgorithm(string algo)
+    {
+        cryptoServiceStrategy.SetCryptoAlgorithm(algo);
+    }
+
+
+    private void DecryptPersonsInfo(IEnumerable<Person>? persons)
+    {
+        if(persons == null || !persons.Any())
+        {
+            return;
+        }
+        foreach(var p in persons)
+        {
+            DecryptPersonInfo(p);
+        }
+    }
+
+    private void DecryptPersonInfo(Person person)
+    {
+        person.PhoneNumber = cryptoServiceStrategy.Decrypt(person.PhoneNumber);
+        person.Email = cryptoServiceStrategy.Decrypt(person.Email);
+    }
+
 }

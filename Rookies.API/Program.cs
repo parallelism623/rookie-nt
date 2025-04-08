@@ -3,6 +3,7 @@ using Rookies.API.Middlewares;
 using Rookies.API.Presentation.Controllers;
 using Rookies.Application;
 using Rookies.Contract;
+using Rookies.Infrastructure;
 using Rookies.Persistence;
 using Serilog;
 
@@ -19,7 +20,8 @@ try
     builder.Services.ConfigurePersistenceLayer(builder.Configuration)
                     .ConfigureApiController()
                     .ConfigureApplicationLayer()
-                    .ConfigureContractLayer();
+                    .ConfigureContractLayer()
+                    .ConfigureInfrastructureService();
     builder.Services.AddControllers();
     builder.Services.AddExceptionHandler<ExceptionHandlerMiddleware>();
     var app = builder.Build();

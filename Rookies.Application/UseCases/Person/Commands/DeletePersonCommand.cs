@@ -13,6 +13,10 @@ public class PersonDeleteCommandHandler(IPersonRepository personRepository,
 {
     public async Task Handle(DeletePersonCommand request, CancellationToken cancellationToken)
     {
+        if(request.Id == Guid.Empty)
+        {
+            throw new BadRequestException(ErrorMessages.PersonIdShouldNotEmpty);
+        }    
         var person = await personRepository.GetByIdAsync(request.Id);
         if (person is null)
         {

@@ -17,11 +17,7 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
 
     public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception exception, CancellationToken cancellationToken)
     {
-
-
-        _logger.LogError(exception.Message);
-
-
+        _logger.LogError(exception, exception.Message);
         var statusCode = GetExceptionResponseStatusCode(exception);
         context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
@@ -34,9 +30,7 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
             Detail = detail, 
             Success = false 
         };
-
         await context.Response.WriteAsJsonAsync(errorResponse, cancellationToken);
-
         return true;
     }
 
@@ -47,12 +41,12 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
         {
             BadRequestException => 400,
             NotFoundException => 404,
-            ValidationException => 422,
+            ValidationException => 400,
             UnAuthorizedException => 401,
             InternalServerErrorException => 500,
             _ => 400
         };
-    }
+    }   
 
     private static string GetExceptionResponseMessage(Exception exception)
     {
@@ -60,7 +54,7 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
         {
             BadRequestException => "Bad request",
             NotFoundException => "Not found",
-            ValidationException => "UnProcessable Entity",
+            ValidationException => "Invalid model",
             UnAuthorizedException => "UnAuthorized",
             InternalServerErrorException => "Internal server error",
             _ => "Bad request"

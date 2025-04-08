@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Rookies.Contract.Shared;
-using System.Net;
 
 namespace Rookies.API.Presentation.Controllers;
 

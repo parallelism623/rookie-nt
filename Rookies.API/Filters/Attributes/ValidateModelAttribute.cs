@@ -2,6 +2,8 @@
 using Rookies.Contract.Exceptions;
 
 namespace Rookies.API.Filters.Attributes;
+
+
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 public class ValidateModelAttribute : ActionFilterAttribute
 {

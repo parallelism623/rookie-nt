@@ -15,5 +15,7 @@ public class PersonResponseModel
     public required string Gender { get; set; }
     public required string BirthPlace { get; set; }
     public string? Address { get; set; }
+    public string Email { get; set; }
+    public string PhoneNumber { get; set; }
 
 }

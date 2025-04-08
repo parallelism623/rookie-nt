@@ -1,6 +1,8 @@
 ﻿using EFCore.BulkExtensions;
 using Microsoft.EntityFrameworkCore;
+using Rookies.Application.Services.Crypto;
 using Rookies.Domain.Entities;
+using Rookies.Infrastructure.Services.Crypto;
 using Rookies.Persistence;
 
 namespace Rookies.API;
@@ -14,12 +16,13 @@ public static class DependencyInjection
 
         var context = scope.ServiceProvider.GetRequiredService<RookiesDbContext>();
 
+        var cryptoServiceStrategy = scope.ServiceProvider.GetRequiredService<ICryptoServiceStrategy>();
         context.Database.MigrateAsync().GetAwaiter().GetResult();
-
-        await SeedAsync(context);
+        cryptoServiceStrategy.SetCryptoAlgorithm(CryptoAlgorithm.RSA);
+        await SeedAsync(context, cryptoServiceStrategy);
     }
 
-    private static async ValueTask SeedAsync(RookiesDbContext dbContext)
+    private static async ValueTask SeedAsync(RookiesDbContext dbContext, ICryptoServiceStrategy cryptoServiceStrategy)
     {
         var persons = new List<Person>
         {
@@ -36,7 +39,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("john.doe@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("123-456-7890")
             },
             new Person
             {
@@ -51,7 +56,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("jane.smith@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("234-567-8901")
             },
             new Person
             {
@@ -66,7 +73,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("michael.nguyen@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("345-678-9012")
             },
             new Person
             {
@@ -81,7 +90,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("linda.tran@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("456-789-0123")
             },
             new Person
             {
@@ -96,7 +107,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("david.kim@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("567-890-1234")
             },
             new Person
             {
@@ -111,7 +124,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("emily.pham@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("678-901-2345")
             },
             new Person
             {
@@ -126,7 +141,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("daniel.lee@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("789-012-3456")
             },
             new Person
             {
@@ -141,7 +158,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("sophia.nguyen@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("890-123-4567")
             },
             new Person
             {
@@ -156,7 +175,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("kevin.tran@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("901-234-5678")
             },
             new Person
             {
@@ -171,7 +192,9 @@ public static class DependencyInjection
                 CreatedAt = DateTime.UtcNow,
                 ModifiedAt = null,
                 CreatedBy = Guid.NewGuid(),
-                ModifiedBy = Guid.Empty
+                ModifiedBy = Guid.Empty,
+                Email = cryptoServiceStrategy.Encrypt("olivia.le@example.com"),
+                PhoneNumber = cryptoServiceStrategy.Encrypt("012-345-6789")
             }
         };
         if (!(await dbContext.Persons.AnyAsync()))

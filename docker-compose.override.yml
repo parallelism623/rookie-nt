@@ -1,0 +1,28 @@
+services:
+  rookies.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - SERILOG_CONFIG
+      - ConnectionStrings__DefaultConnection
+      - EncryptionOptions__RSA__PrivateKey
+      - EncryptionOptions__RSA__PublicKey
+    ports:
+      - "6000:8080"
+      - "6060:8081"
+    depends_on:
+      - rookies.db
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ./Rookies.API/Loggings:/app/Loggings
+  rookies.db:
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mssqlA@123
+      - MSSQL_DATABASE=Rookies
+    ports:
+      - "1433:1433"
+    volumes:
+      - rookies.db:/var/opt/mssql  

@@ -37,7 +37,7 @@ public class PersonsController : ApiBaseController
         return GetResponse(ResponseMessages.PersonCreatedSuccess);
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeletePerson(Guid id)
     {
         var personDeleteCommandModel = new DeletePersonCommand(id);

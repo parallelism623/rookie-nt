@@ -8,7 +8,7 @@ namespace Rookies.Persistence
     {
         public RookiesDbContext(DbContextOptions<RookiesDbContext> options) : base(options)
         {}
-        
+
 
         public DbSet<Person> Persons { get; set; }
 

@@ -1,0 +1,11 @@
+services:
+  rookies.api:
+    image: ${DOCKER_REGISTRY-}rookiesapi
+    build:
+      context: .
+      dockerfile: Rookies.API/Dockerfile
+  rookies.db:
+    image: "mcr.microsoft.com/mssql/server"
+
+volumes:
+  rookies.db:

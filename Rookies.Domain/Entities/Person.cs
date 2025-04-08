@@ -12,6 +12,8 @@ public class Person : IAuditableEntity, IEntity<Guid>
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public string? FullName { get; set; } = default!;
+    public string Email { get; set; } = default!;
+    public string PhoneNumber { get; set; } = default!;
     public DateTime DateOfBirth { get; set; }
     public int Gender { get; set; }
     public required string BirthPlace { get; set; }
