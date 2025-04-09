@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.IdentityModel.Tokens;
 using Rookies.Contract.Exceptions;
+using Rookies.Contract.Shared;
+using System.Net;
+using System.Threading;
 
 namespace Rookies.API.Filters.Attributes;
 
@@ -11,12 +17,20 @@ public class ValidateModelAttribute : ActionFilterAttribute
     {
         if (!context.ModelState.IsValid)
         {
-            var error = context.ModelState
+            var errors = context.ModelState
                     .Where(x => x.Value?.Errors.Count > 0)
-                    .Select(x => x.Value?.Errors?.FirstOrDefault()?.ErrorMessage)
-                    .FirstOrDefault();
-            if (!string.IsNullOrEmpty(error))
-                throw new InvalidModelRequestException(error);
+                    .Select(x => new Error(x.Key, x.Value?.Errors?.FirstOrDefault()?.ErrorMessage))
+                    .ToList();
+            var errorResponse = new Result { StatusCode=400, IsSuccess=false};
+            if (errors.Any())
+            {
+                errorResponse.Errors = errors;
+            }
+            context.Result = new JsonResult(errorResponse)
+            {
+                StatusCode = StatusCodes.Status400BadRequest
+            };
+            return;
         }
     }
 }

@@ -4,7 +4,6 @@ using Rookies.Application.UseCases.Persons.Commands;
 using Rookies.Application.UseCases.Persons.Queries;
 using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
-using Rookies.Contract.Shared;
 
 namespace Rookies.API.Presentation.Controllers;
 
@@ -24,7 +23,7 @@ public class PersonsController : ApiBaseController
 
         var personQueryResponse = await _sender.Send(personQueryRequest);
 
-        return GetResponse(personQueryResponse, ResponseMessages.PersonsQuerySuccess);
+        return GetResponse(personQueryResponse);
     }
 
     [HttpPost]
@@ -32,9 +31,9 @@ public class PersonsController : ApiBaseController
     {
         var personCreateCommandModel = new CreatePersonCommand(model);
 
-        await _sender.Send(personCreateCommandModel);
+        var result = await _sender.Send(personCreateCommandModel);
 
-        return GetResponse(ResponseMessages.PersonCreatedSuccess);
+        return GetResponse(result);
     }
 
     [HttpDelete("{id:guid}")]
@@ -42,9 +41,9 @@ public class PersonsController : ApiBaseController
     {
         var personDeleteCommandModel = new DeletePersonCommand(id);
 
-        await _sender.Send(personDeleteCommandModel);
+        var result = await _sender.Send(personDeleteCommandModel);
 
-        return GetResponse(ResponseMessages.PersonDeletedSuccess);
+        return GetResponse(result);
     }
 
     [HttpPut]
@@ -52,9 +51,9 @@ public class PersonsController : ApiBaseController
     {
         var personUpdateRequest = new UpdatePersonCommand(model);
 
-        await _sender.Send(personUpdateRequest);
+        var result = await _sender.Send(personUpdateRequest);
 
-        return GetResponse(ResponseMessages.PersonUpdatedSuccess);
+        return GetResponse(result);
     }
 
 }

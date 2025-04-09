@@ -1,31 +1,42 @@
 ﻿using Rookies.Application.Services.Crypto;
 using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
+using Rookies.Contract.Shared;
 using Rookies.Domain.Entities;
 using Rookies.Domain.Repositories;
 using Rookies.Infrastructure.Services.Crypto;
 
 namespace Rookies.Application.UseCases.Persons.Commands;
-public record CreatePersonCommand(PersonCreateRequestModel Model) : IRequest { }
+public record CreatePersonCommand(PersonCreateRequestModel Model) : IRequest<Result<string>> { }
 
 
 public class CreatePersonCommandHandler(IPersonRepository personRepository,
                                         ILogger<CreatePersonCommandHandler> logger,
                                         ICryptoServiceStrategy cryptoService)
-                                        : IRequestHandler<CreatePersonCommand>
+                                        : IRequestHandler<CreatePersonCommand, Result<string>>
 {
 
-    public async Task Handle(CreatePersonCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
     {
-        SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
+        try
+        {
+            SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
 
-        var person = request.Model.Adapt<Person>();
+            var person = request.Model.Adapt<Person>();
 
-        EncryptPersonInfo(person);
+            EncryptPersonInfo(person);
 
-        logger.LogInformation(LoggingTemplateMessages.PersonCreatedWithIdSuccess, person.Id);
+            logger.LogInformation(LoggingTemplateMessages.PersonCreatedWithIdSuccess, person.Id);
 
-        await personRepository.UnitOfWork.SaveChangesAsync();
+            await personRepository.UnitOfWork.SaveChangesAsync();
+
+            return Result<string>.Success(ResponseMessages.PersonCreatedSuccess);
+        }
+        catch(Exception ex)
+        {
+            logger.LogError(ex, ex.Message);
+            return Result<string>.Failure(ex.Message, 500);
+        }
     }
 
     private void SetEncryptionAlgorithm(string algo)

@@ -22,13 +22,11 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
         context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/json";
         var message = GetExceptionResponseMessage(exception) ?? "";
-        var detail = exception.Message;
-        var errorResponse = new Result 
+        var errorResponse = new Result
         { 
-            Message = message, 
+            Errors = new List<Error> { new Error(message, exception.Message) }, 
             StatusCode = statusCode, 
-            Detail = detail, 
-            Success = false 
+            IsSuccess = false 
         };
         await context.Response.WriteAsJsonAsync(errorResponse, cancellationToken);
         return true;

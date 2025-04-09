@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using NetTopologySuite.Noding;
+﻿using Microsoft.AspNetCore.Mvc;
 using Rookies.API.Filters.Attributes;
-using Rookies.Contract.Exceptions;
 using Rookies.Contract.Shared;
-using System.Net;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rookies.API.Presentation.Controllers;
 
@@ -12,16 +9,29 @@ namespace Rookies.API.Presentation.Controllers;
 [ValidateModel]
 public abstract class ApiBaseController : ControllerBase
 {
-
-    protected IActionResult GetResponse<T>(T data, 
-                                        string detail)
+    protected IActionResult OnResultSuccess<T>(T result)
+        where T : Result
     {
-        var response = new Result<T>(data, HttpStatusCode.OK.ToString(), 200, detail);
-        return Ok(response);
+        return result.StatusCode switch
+        {
+            StatusCodes.Status200OK => Ok(result),
+            _ => StatusCode(StatusCodes.Status500InternalServerError, result)
+        };
     }
-    protected IActionResult GetResponse(string detail)
+    protected IActionResult OnResultFailure<T>(T result)
+        where T : Result
     {
-        var response = new Result(HttpStatusCode.OK.ToString(), 200, detail, true);
-        return Ok(response);
+        return result.StatusCode switch
+        {
+            StatusCodes.Status400BadRequest => BadRequest(result),
+            StatusCodes.Status404NotFound => NotFound(result),
+            _ => StatusCode(StatusCodes.Status500InternalServerError, result)
+        };
+    }
+
+    protected IActionResult GetResponse<T>(T result)
+        where T : Result
+    {
+        return result.IsSuccess ? OnResultSuccess(result) : OnResultFailure(result);
     }
 }

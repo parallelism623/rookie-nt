@@ -8,24 +8,33 @@ using Rookies.Infrastructure.Services.Crypto;
 
 namespace Rookies.Application.UseCases.Persons.Queries;
 public record GetPersonsQuery(PersonQueryParameters QueryParameters) 
-    : IRequest<PagingResult<PersonResponseModel>>
+    : IRequest<Result<PagingResult<PersonResponseModel>>>
 { }
 
 public class GetPersonsQueryHandler(IPersonRepository personRepository,
                                     ILogger<GetPersonsQueryHandler> logger,
                                     ICryptoServiceStrategy cryptoServiceStrategy)
-    : IRequestHandler<GetPersonsQuery, PagingResult<PersonResponseModel>>
+    : IRequestHandler<GetPersonsQuery, Result<PagingResult<PersonResponseModel>>>
 {
-    public async Task<PagingResult<PersonResponseModel>> Handle(GetPersonsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<PagingResult<PersonResponseModel>>> Handle(GetPersonsQuery request, CancellationToken cancellationToken)
     {
-        SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
+        try
+        {
+            SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
 
-        var persons = await personRepository.GetAsync(request.QueryParameters);
+            var persons = await personRepository.GetAsync(request.QueryParameters);
 
-        DecryptPersonsInfo(persons.Items);
-        logger.LogInformation(LoggingTemplateMessages.PersonQuerySuccess, persons.TotalCount);
+            DecryptPersonsInfo(persons.Items);
+            logger.LogInformation(LoggingTemplateMessages.PersonQuerySuccess, persons.TotalCount);
 
-        return persons.Adapt<PagingResult<PersonResponseModel>>();
+
+            return Result<PagingResult<PersonResponseModel>>.Success(persons.Adapt<PagingResult<PersonResponseModel>>());
+        }
+        catch(Exception ex)
+        {
+            logger.LogError(ex, ex.Message);
+            return new(null ,500, false, new Error("ServerInternalError", ex.Message));
+        }
     }
     private void SetEncryptionAlgorithm(string algo)
     {
