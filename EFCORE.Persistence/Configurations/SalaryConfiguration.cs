@@ -14,7 +14,7 @@ public class SalaryConfiguration : IEntityTypeConfiguration<Salary>
         builder.Property(s => s.Amount)
                .HasColumnType("decimal(18,2)")
                .IsRequired();
-
+        builder.HasIndex(s => s.EmployeeId);
         builder.HasOne(s => s.Employee)
                .WithOne(e => e.Salary)
                .HasForeignKey<Salary>(s => s.Id)
