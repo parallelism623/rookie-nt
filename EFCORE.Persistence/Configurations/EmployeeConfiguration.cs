@@ -10,9 +10,11 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
         builder.ToTable("Employee")
                .HasIndex(e => e.Id);
+
         builder.Property(e => e.Name)
                .IsRequired()
                .HasMaxLength(100);
+
         builder.HasOne(e => e.Department)
                .WithMany(e => e.Employees)
                .HasForeignKey(e => e.DepartmentId)

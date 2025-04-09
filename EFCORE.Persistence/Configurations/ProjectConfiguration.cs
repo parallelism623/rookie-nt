@@ -9,6 +9,7 @@ public class ProjectConfiguration : IEntityTypeConfiguration<Project>
     public void Configure(EntityTypeBuilder<Project> builder)
     {
         builder.ToTable("Project").HasIndex(p => p.Id);
+
         builder.Property(p => p.Name).IsRequired().HasMaxLength(100);
     }
 }

@@ -10,9 +10,11 @@ public class SalaryConfiguration : IEntityTypeConfiguration<Salary>
     {
         builder.ToTable("Salary")
                .HasIndex(s => s.Id);
+
         builder.Property(s => s.Amount)
                .HasColumnType("decimal(18,2)")
                .IsRequired();
+
         builder.HasOne(s => s.Employee)
                .WithOne(e => e.Salary)
                .HasForeignKey<Salary>(s => s.Id)

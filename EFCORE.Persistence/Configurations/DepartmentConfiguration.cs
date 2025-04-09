@@ -10,9 +10,11 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
         builder.ToTable("Departments")
                .HasIndex(d => d.Id);
+
         builder.Property(d => d.Name)
                .IsRequired()
                .HasMaxLength(100);
+
         builder.HasData(
             new
             {
