@@ -26,6 +26,13 @@ public class ProjectEmployeeController : ApiBaseController
         return ProcessResult(result);
     }
 
+    [HttpPut]
+    public async Task<IActionResult> UpdateAsync([FromBody] ProjectEmployeeUpdateRequest projectEmployeeUpdateRequest)
+    {
+        var result = await _projectEmployeeService.UpdateAsync(projectEmployeeUpdateRequest);
+        return ProcessResult(result);
+    }
+
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {

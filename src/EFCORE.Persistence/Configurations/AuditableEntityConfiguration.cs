@@ -1,6 +1,5 @@
 ﻿
 using EFCORE.Domain.Abstract;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace EFCORE.Persistence.Configurations;

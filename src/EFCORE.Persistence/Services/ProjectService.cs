@@ -25,17 +25,18 @@ public class ProjectService : IProjectService
     {
         var employeeIds = projectCreateRequest.ProjectEmployees?
                                 .GroupBy(x => x.EmployeeId)
-                                .Select(x => x.First().EmployeeId).ToList();
+                                .Select(x => (Guid)x.First().EmployeeId!).ToList();
         var project = projectCreateRequest.ToProject();
         _projectRepository.Add(project);
 
-        if (employeeIds != null && employeeIds.Count == 0)
+        if (employeeIds != null && employeeIds.Count != 0)
         {
             var employees = await _employeeRepository.GetByIdsAsync(employeeIds);
             if(employees == null || employees.Count != employeeIds?.Count)
             {
-                return Result<string>.Failure(400, ProjectError.NotFound);
+                return Result<string>.Failure(400, ProjectError.EmployeeIdsNotExists);
             }
+            project.ProjectEmployees = new List<ProjectEmployee>();
             foreach (var employeeId in employeeIds)
             {
                 project.ProjectEmployees.Add(new ProjectEmployee

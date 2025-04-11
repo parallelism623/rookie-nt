@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EFCORE.API.Presentation.Controllers;
 
-[Route("v{v:apiVersion}/[controller]")]
+[Route("[controller]")]
 public class EmployeeController : ApiBaseController
 {
     private readonly IEmployeeService _employeeService;
@@ -26,26 +26,49 @@ public class EmployeeController : ApiBaseController
         return ProcessResult(result);
     }
     [MapToApiVersion(1)]
-    [HttpGet]
+    [HttpGet("v1/departments")]
     public async Task<IActionResult> GetWithDepartmentAsync([FromQuery] QueryParameters queryParamerters)
     {
         var result = await _employeeService.GetWithDepartmentAsync(queryParamerters);
         return ProcessResult(result);
     }
     [MapToApiVersion(1)]
-    [HttpGet]
+    [HttpGet("v1/projects")]
     public async Task<IActionResult> GetWithProjectsAsync([FromQuery] QueryParameters queryParamerters)
     {
         var result = await _employeeService.GetWithProjectsAsync(queryParamerters);
         return ProcessResult(result);
     }
     [MapToApiVersion(1)]
-    [HttpGet]
-    public async Task<IActionResult> GetByJoinedDateAndSalary([FromQuery] QueryParameters queryParamerters)
+    [HttpGet("v1")]
+    public async Task<IActionResult> GetByJoinedDateAndSalary([FromQuery] EmployeeQueryParamerters queryParamerters)
     {
         var result = await _employeeService.GetByJoinedDateAndSalary(queryParamerters);
         return ProcessResult(result);
     }
+
+    [MapToApiVersion(2)]
+    [HttpGet("v2/departments")]
+    public async Task<IActionResult> GetWithDepartmentRawQueryAsync([FromQuery] QueryParameters queryParamerters)
+    {
+        var result = await _employeeService.GetWithDepartmentRawQueryAsync(queryParamerters);
+        return ProcessResult(result);
+    }
+    [MapToApiVersion(2)]
+    [HttpGet("v2/projects")]
+    public async Task<IActionResult> GetWithProjectsRawQueryAsync([FromQuery] QueryParameters queryParamerters)
+    {
+        var result = await _employeeService.GetWithProjectsRawQueryAsync(queryParamerters);
+        return ProcessResult(result);
+    }
+    [MapToApiVersion(2)]
+    [HttpGet("v2")]
+    public async Task<IActionResult> GetByJoinedDateAndSalaryRawQuery([FromQuery] EmployeeQueryParamerters queryParamerters)
+    {
+        var result = await _employeeService.GetByJoinedDateAndSalaryRawQuery(queryParamerters);
+        return ProcessResult(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromBody] EmployeeCreateRequest employeeCreateRequest)
     {

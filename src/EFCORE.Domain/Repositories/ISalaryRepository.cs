@@ -1,5 +1,4 @@
-﻿using EFCORE.Domain.Abstract;
-using EFCORE.Domain.Entities;
+﻿using EFCORE.Domain.Entities;
 
 namespace EFCORE.Domain.Repositories;
 

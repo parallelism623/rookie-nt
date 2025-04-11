@@ -8,13 +8,12 @@ namespace EFCORE.Application.UseCases.Department;
 public class DepartmentCreateRequest
 {
     public string? Name { get; set; }
-    public List<Guid>? EmployeeIds { get; set; }
 }
 
 
 public class DepartmentCreateRequestValidator : AbstractValidator<DepartmentCreateRequest>
 {
-    private const string NameRegexPattern = @"^\p{L}+$";
+    private const string NameRegexPattern = @"^[\p{L}\d_\-\s]+$";
     public DepartmentCreateRequestValidator()
     {
         RuleFor(d => d.Name)

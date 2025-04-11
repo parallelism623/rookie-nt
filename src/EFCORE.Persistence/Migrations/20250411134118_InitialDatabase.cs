@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EFCORE.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Initdatabase : Migration
+    public partial class InitialDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -115,8 +115,8 @@ namespace EFCORE.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Salary", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Salary_Employee_Id",
-                        column: x => x.Id,
+                        name: "FK_Salary_Employee_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employee",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);

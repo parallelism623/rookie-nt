@@ -13,7 +13,7 @@ public class ProjectUpdateRequest
 
 public class ProjectUpdateRequestValidator : AbstractValidator<ProjectUpdateRequest>
 {
-    private const string NameRegexPattern = @"^\p{L}+$";
+    private const string NameRegexPattern = @"^[\p{L}\d_\-\s]+$";
     public ProjectUpdateRequestValidator()
     {
         RuleFor(p => p.Id)

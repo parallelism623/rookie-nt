@@ -14,12 +14,20 @@ public static class EmployeeMapping
             Name = employeeCreateRequest.Name,
             DepartmentId = employeeCreateRequest.DepartmentId,
             JoinedDate = employeeCreateRequest.JoinedDate,
-            Salary = new Salary
+            Salary = employeeCreateRequest.Amount != null ? new Salary
             {
-                Amount = employeeCreateRequest.Amount
-            }
+                Amount = (decimal)employeeCreateRequest.Amount
+            } : default!
 
         };
+    }
+    public static void ToEmployee(this EmployeeUpdateRequest employeeUpdateRequest, Employee employee)
+    {
+        employee.Id = employeeUpdateRequest.Id;
+        employee.Name = employeeUpdateRequest.Name;
+        employee.DepartmentId = employeeUpdateRequest.DepartmentId;
+        employee.JoinedDate = employeeUpdateRequest.JoinedDate;
+        employee.Salary.Amount = (decimal)employeeUpdateRequest.Amount!;
     }
 
     public static EmployeeResponse ToEmployeeResponse(this Employee employee)
@@ -38,7 +46,7 @@ public static class EmployeeMapping
     {
         return new(projectEmployee.Name, projectEmployee.Id, enable);
     }
-    public static List<EmployeeResponse> ToEmployeeResponse(this IEnumerable<Employee> employees)
+    public static List<EmployeeResponse> ToEmployeesResponse(this IEnumerable<Employee> employees)
     {
         List<EmployeeResponse> result = new();
         foreach (var employee in employees)
@@ -53,25 +61,21 @@ public static class EmployeeMapping
     }
 
 
-    public static void ToEmployee(this EmployeeUpdateRequest employeeUpdateRequest, Employee employee)
-    {
-        employee.Id = employeeUpdateRequest.Id;
-        employee.Name = employeeUpdateRequest.Name;
-        employee.DepartmentId = employeeUpdateRequest.DepartmentId;
-        employee.JoinedDate = employeeUpdateRequest.JoinedDate;
-        employee.Salary.Amount = employeeUpdateRequest.Amount;
-    }
-
     public static EmployeeDetailResponse ToEmployeeDetailsResponse(this Employee employee)
     {
+        EmployeeDepartmentResponse? department = employee.Department == null ? default
+                                                : new(employee.Department.Name, employee.Department.Id);
+
+        EmployeeSalaryResponse? salary = employee.Salary == null ? default
+                                                : new(employee.Salary.Amount, employee.Salary.Id);
         return new EmployeeDetailResponse
         {
             Id = employee.Id,
             Name = employee.Name,
             JoinedDate = employee.JoinedDate,
             Projects = employee.ProjectEmployees?.Select(e => e.Project.ToEmployeeProjectResponse(e.Enable))?.ToList(),
-            Department = new(employee.Department.Name, employee.Department.Id),
-            Salary = new(employee.Salary.Amount, employee.Salary.Id)
+            Department = department,
+            Salary = salary
         };
     }
 

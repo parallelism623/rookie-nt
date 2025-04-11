@@ -2,7 +2,6 @@
 using EFCORE.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.Reflection;
 
@@ -23,8 +22,8 @@ public class ApplicationDbContext : DbContext
     public Task SaveChangesEntitiesAsync()
     {
         var entries = ChangeTracker.Entries()
-    .                           Where(e => e.Entity is AuditableEntity
-                                    && (e.State == EntityState.Added 
+    .Where(e => e.Entity is AuditableEntity
+                                    && (e.State == EntityState.Added
                                     || e.State == EntityState.Modified));
 
         foreach (var entry in entries)
@@ -38,11 +37,11 @@ public class ApplicationDbContext : DbContext
                 auditableEntity.CreatedBy = Guid.NewGuid();
             }
 
-            if(entry.State == EntityState.Modified)
+            if (entry.State == EntityState.Modified)
             {
                 auditableEntity.ModifiedAt = now;
                 auditableEntity.ModifiedBy = Guid.NewGuid();
-            }   
+            }
         }
         return base.SaveChangesAsync();
     }
@@ -72,11 +71,11 @@ public class ApplicationDbContext : DbContext
     {
         if (_transaction == null)
         {
-            throw new Exception("");
+            throw new ArgumentException("Current transaction in dbcontext is null");
         }
         if (_transaction != transaction)
         {
-            throw new Exception("");
+            throw new ArgumentException("Current transaction not match");
         }
         try
         {
@@ -89,11 +88,11 @@ public class ApplicationDbContext : DbContext
         }
         finally
         {
-            if(HasActiveTransaction)
+            if (HasActiveTransaction)
             {
                 _transaction.Dispose();
                 _transaction = null;
-            }    
+            }
         }
     }
 

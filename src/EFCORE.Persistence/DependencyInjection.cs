@@ -1,6 +1,7 @@
 ﻿using EFCORE.Application.UseCases.Department;
 using EFCORE.Application.UseCases.Employee;
 using EFCORE.Application.UseCases.Project;
+using EFCORE.Application.UseCases.ProjectEmployee;
 using EFCORE.Application.UseCases.Salary;
 using EFCORE.Domain.Abstract;
 using EFCORE.Domain.Repositories;
@@ -27,6 +28,7 @@ public static class DependencyInjection
         services.AddDbContextPool<ApplicationDbContext>(options =>
             options.UseSqlServer(config.GetConnectionString("DefaultConnectionString"))
         );
+        services.AddScoped<ITransactionManager, TransactionManager>();
         return services;
     }
     
@@ -36,6 +38,7 @@ public static class DependencyInjection
         services.AddScoped<IProjectService, ProjectService>();
         services.AddScoped<IEmployeeService, EmployeeService>();
         services.AddScoped<ISalaryService, SalaryService>();
+        services.AddScoped<IProjectEmployeeSerivce, ProjectEmployeeSerivce>();    
         return services;
     }
 
@@ -44,7 +47,8 @@ public static class DependencyInjection
         return services.AddScoped<IDepartmentRepository, DepartmentRepository>()
                        .AddScoped<IProjectRepository, ProjectRepository>()
                        .AddScoped<IEmployeeRepository, EmployeeRepository>()
-                       .AddScoped<ISalaryRepository, SalaryRepository>();
+                       .AddScoped<ISalaryRepository, SalaryRepository>()
+                       .AddScoped<IProjectEmployeeRepository, ProjectEmployeeRepository>();
 
     }
 }

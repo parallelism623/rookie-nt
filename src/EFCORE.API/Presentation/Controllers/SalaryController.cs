@@ -19,7 +19,12 @@ public class SalaryController : ApiBaseController
         return ProcessResult(result);
     }
 
-
+    [HttpPost]
+    public async Task<IActionResult> CreateAsync([FromBody] SalaryCreateRequest salaryCreateRequest)
+    {
+        var result = await _salaryService.CreateAsync(salaryCreateRequest);
+        return ProcessResult(result);
+    }
     [HttpPut]
     public async Task<IActionResult> UpdateAsync([FromBody] SalaryUpdateRequest salaryUpdateRequest)
     {

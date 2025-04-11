@@ -12,7 +12,7 @@ public class DepartmentUpdateRequest
 
 public class DepartmentUpdateValidator : AbstractValidator<DepartmentUpdateRequest>
 {
-    private const string NameRegexPattern = @"^\p{L}+$";
+    private const string NameRegexPattern = @"^[\p{L}\d_\-\s]+$";
     public DepartmentUpdateValidator()
     {
         RuleFor(d => d.Id)

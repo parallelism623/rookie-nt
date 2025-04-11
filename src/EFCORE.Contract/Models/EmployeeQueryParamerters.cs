@@ -5,10 +5,9 @@ namespace EFCORE.Application.UseCases.Employee;
 
 public class EmployeeQueryParamerters : QueryParameters
 {
-    public string? Includes { get; set; }
 
-    public DateOnly? JoinedFromDate { get; set; }
+    public DateOnly? JoinedFromDate { get; set; } = default;
 
-    public decimal? MinSalary { get; set; }
+    public decimal? MinSalary { get; set; } = default;
 
 }

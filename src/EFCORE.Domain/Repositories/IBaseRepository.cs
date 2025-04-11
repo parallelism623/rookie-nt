@@ -1,7 +1,8 @@
-﻿using EFCORE.Domain.Entities;
+﻿using EFCORE.Domain.Abstract;
+using EFCORE.Domain.Entities;
 using System.Linq.Expressions;
 
-namespace EFCORE.Domain.Abstract;
+namespace EFCORE.Domain.Repositories;
 public interface IBaseRepository<TEntity, in TKey>
     where TEntity : class, IEntity<TKey>
     where TKey : notnull
@@ -10,7 +11,6 @@ public interface IBaseRepository<TEntity, in TKey>
     Task SaveChangesAsync();
     Task<TEntity?> GetByIdAsync(TKey id, params Expression<Func<TEntity, object>>[] includes);
     void Add(TEntity entity);
-    void Update(TEntity entity);    
+    void Update(TEntity entity);
     void Delete(TEntity entity);
-
 }

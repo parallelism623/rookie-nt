@@ -1,4 +1,5 @@
 ﻿using EFCORE.Domain.Abstract;
+using EFCORE.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

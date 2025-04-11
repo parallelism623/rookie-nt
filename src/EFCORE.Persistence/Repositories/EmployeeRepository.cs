@@ -2,6 +2,7 @@
 using EFCORE.Domain.Repositories;
 using EFCORE.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
+using System.Data.Common;
 
 namespace EFCORE.Persistence.Repositories;
 
@@ -16,9 +17,10 @@ public class EmployeeRepository : BaseRepository<Employee, Guid>, IEmployeeRepos
         return _context.Employees?.AsNoTracking().Where(e => ids.Contains(e.Id))?.ToListAsync()!;
     }
 
-    public IQueryable<Employee> GetByJoinedDateAndSalary()
+
+    public DbConnection GetDbConnection()
     {
-        return ApplySpecification(new EmployeesByJoinedDateAndSalarySpecification());
+        return _context.Database.GetDbConnection();
     }
 
     public Task<Employee?> GetEmployeeDetailByIdAsync(Guid id)
@@ -34,11 +36,4 @@ public class EmployeeRepository : BaseRepository<Employee, Guid>, IEmployeeRepos
             .FirstOrDefaultAsync()!;
     }
 
-    private IQueryable<Employee> ApplySpecification(
-        Specification<Employee, Guid> specification)
-    {
-        return SpecificationsExecutor.GetQuery(
-            GetAll(),
-            specification);
-    }
 }

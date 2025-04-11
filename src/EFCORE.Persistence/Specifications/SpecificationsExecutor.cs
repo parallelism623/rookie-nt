@@ -4,24 +4,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EFCORE.Persistence.Specifications;
 
-public class SpecificationsExecutor
+public static class SpecificationsExecutor
 {
     public static IQueryable<TEntity> GetQuery<TEntity, TKey>(
-    IQueryable<TEntity> inputQueryable,
-    Specification<TEntity, TKey> specification)
+    this Specification<TEntity, TKey> specification,
+    IQueryable<TEntity> inputQueryable)
     where TEntity : class, IEntity<TKey>
     where TKey : notnull
     {
         IQueryable<TEntity> queryable = inputQueryable;
 
-        if (specification.Criteria is not null)
-        {
-            queryable = queryable.Where(specification.Criteria);
-        }
+
 
         if(specification.IncludeExpressions.Count > 0)
         {
-            specification.IncludeExpressions.Aggregate(
+            queryable = specification.IncludeExpressions.Aggregate(
                                 queryable,
                                 (current, includeExpression) =>
                                     current.Include(includeExpression));
@@ -41,7 +38,7 @@ public class SpecificationsExecutor
         {
             queryable = queryable.AsSplitQuery();
         }
-
+    
         return queryable;
     }
 }

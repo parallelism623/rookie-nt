@@ -31,7 +31,7 @@ public class EmployeeCreateRequestValidator : AbstractValidator<EmployeeCreateRe
             .NotEmpty()
             .WithMessage(EmployeeValidationMessages.JoinedDateRequired);
         RuleFor(x => x.Amount)
-            .GreaterThan(0)
+            .GreaterThanOrEqualTo(0)
             .WithMessage(EmployeeValidationMessages.AmountInvalid);
     }
 }

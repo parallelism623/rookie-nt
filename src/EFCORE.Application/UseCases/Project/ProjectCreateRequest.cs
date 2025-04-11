@@ -1,5 +1,4 @@
-﻿
-using EFCORE.Application.UseCases.ProjectEmployee;
+﻿using EFCORE.Application.UseCases.ProjectEmployee;
 using EFCORE.Contract.Messages.ValidationMessages;
 using FluentValidation;
 
@@ -13,7 +12,7 @@ public class ProjectCreateRequest
 
 public class ProjectCreateRequestValidator : AbstractValidator<ProjectCreateRequest>
 {
-    private const string NameRegexPattern = @"^\p{L}+$";
+    private const string NameRegexPattern = @"^[\p{L}\d_\-\s]+$";
     public ProjectCreateRequestValidator()
     {
         RuleFor(p => p.Name)

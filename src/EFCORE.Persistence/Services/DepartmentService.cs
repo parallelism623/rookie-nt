@@ -5,32 +5,18 @@ using EFCORE.Contract.Messages.ResponseMessages;
 using EFCORE.Contract.Shared;
 using EFCORE.Domain.Abstract;
 using EFCORE.Domain.Repositories;
-using Microsoft.Extensions.Logging;
 
 
 namespace EFCORE.Persistence.Services;
 
 
-public class DepartmentService(IDepartmentRepository departmentRepository,
-                                IEmployeeRepository employeeRepository) : IDepartmentService
+public class DepartmentService(IDepartmentRepository departmentRepository) : IDepartmentService
 {
     public async Task<Result<string>> CreateAsync(DepartmentCreateRequest departmentCreateRequest)
     {
       
         var department = departmentCreateRequest.ToDepartment();
 
-        if(departmentCreateRequest.EmployeeIds != null && departmentCreateRequest.EmployeeIds.Count > 0)
-        {
-            var employees = await employeeRepository.GetByIdsAsync(departmentCreateRequest.EmployeeIds);
-
-            if (employees != null && employees.Count > 0)
-            {
-                foreach (var employee in employees)
-                {
-                    department.Employees.Add(employee);
-                }
-            }
-        }
         departmentRepository.Add(department);
 
         await departmentRepository.SaveChangesAsync();

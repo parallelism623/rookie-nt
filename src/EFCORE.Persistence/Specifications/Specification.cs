@@ -11,6 +11,8 @@ public abstract class Specification<TEntity, TKey>
     protected Specification(Expression<Func<TEntity, bool>>? criteria) =>
             Criteria = criteria;
 
+    public int PageIndex { get;protected set; } 
+    public int PageSize { get;protected set; }
     public bool IsSplitQuery { get; protected set; }
 
     public Expression<Func<TEntity, bool>>? Criteria { get; }
@@ -20,6 +22,7 @@ public abstract class Specification<TEntity, TKey>
     public Expression<Func<TEntity, object>>? OrderByExpression { get; private set; }
 
     public Expression<Func<TEntity, object>>? OrderByDescendingExpression { get; private set; }
+
 
     protected void AddInclude(Expression<Func<TEntity, object>> includeExpression) =>
         IncludeExpressions.Add(includeExpression);
@@ -31,4 +34,11 @@ public abstract class Specification<TEntity, TKey>
     protected void AddOrderByDescending(
         Expression<Func<TEntity, object>> orderByDescendingExpression) =>
         OrderByDescendingExpression = orderByDescendingExpression;
+
+
+    protected void AddPaging(int pageSize, int pageIndex)
+    {
+        PageIndex = pageIndex;
+        PageSize = pageSize;
+    }
 }

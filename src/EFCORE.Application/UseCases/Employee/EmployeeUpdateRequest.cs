@@ -10,7 +10,7 @@ public class EmployeeUpdateRequest
     public string Name { get; set; } = default!;
     public Guid DepartmentId { get; set; }
     public DateOnly JoinedDate { get; set; }
-    public decimal Amount { get; set; }
+    public decimal? Amount { get; set; }
 }
 
 public class EmployeeUpdateRequestValidator : AbstractValidator<EmployeeUpdateRequest>
@@ -31,8 +31,5 @@ public class EmployeeUpdateRequestValidator : AbstractValidator<EmployeeUpdateRe
         RuleFor(x => x.JoinedDate)
             .NotEmpty()
             .WithMessage(EmployeeValidationMessages.JoinedDateRequired);
-        RuleFor(x => x.Amount)
-            .GreaterThan(0)
-            .WithMessage(EmployeeValidationMessages.AmountInvalid);
     }
 }
