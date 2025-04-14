@@ -1,0 +1,586 @@
+{
+  "Timestamp": "2025-04-02T23:52:58.1538801+07:00",
+  "Level": "Error",
+  "MessageTemplate": "An unhandled exception has occurred while executing the request.",
+  "TraceId": "1807c16f19be0daf4a3e3fd1da69ddaf",
+  "SpanId": "b65e6889b75fb137",
+  "Exception": "System.NullReferenceException: Object reference not set to an instance of an object.\r\n   at AspNetCoreGeneratedDocument.Views_Rookies_Update.<ExecuteAsync>b__28_0()\r\n   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.GetChildContentAsync(Boolean useCachedResult, HtmlEncoder encoder)\r\n   at Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)\r\n   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)\r\n   at AspNetCoreGeneratedDocument.Views_Rookies_Update.ExecuteAsync()\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)\r\n   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()\r\n--- End of stack trace from previous location ---\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\r\n--- End of stack trace from previous location ---\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\r\n   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)\r\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+  "Properties": {
+    "EventId": {
+      "Id": 1,
+      "Name": "UnhandledException"
+    },
+    "SourceContext": "Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware",
+    "RequestId": "0HNBI0R90EF0D:00000001",
+    "RequestPath": "/NashTech/Rookies/Update/3410819f-d945-4780-afa9-013270a8affb",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:52:58.2460423+07:00",
+  "Level": "Error",
+  "MessageTemplate": "Object reference not set to an instance of an object.",
+  "TraceId": "1807c16f19be0daf4a3e3fd1da69ddaf",
+  "SpanId": "b65e6889b75fb137",
+  "Properties": {
+    "SourceContext": "mvc_todolist.Middlewares.ExceptionHandlerMiddleware",
+    "RequestId": "0HNBI0R90EF0D:00000001",
+    "RequestPath": "/NashTech/Rookies/Update/3410819f-d945-4780-afa9-013270a8affb",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:53:00.7544667+07:00",
+  "Level": "Error",
+  "MessageTemplate": "An unhandled exception has occurred while executing the request.",
+  "TraceId": "60d611f7d8139fd48ee261c5fd4ebc0a",
+  "SpanId": "f992ed40596981dc",
+  "Exception": "System.NullReferenceException: Object reference not set to an instance of an object.\r\n   at AspNetCoreGeneratedDocument.Views_Rookies_Update.<ExecuteAsync>b__28_0()\r\n   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperExecutionContext.GetChildContentAsync(Boolean useCachedResult, HtmlEncoder encoder)\r\n   at Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper.ProcessAsync(TagHelperContext context, TagHelperOutput output)\r\n   at Microsoft.AspNetCore.Razor.Runtime.TagHelpers.TagHelperRunner.<RunAsync>g__Awaited|0_0(Task task, TagHelperExecutionContext executionContext, Int32 i, Int32 count)\r\n   at AspNetCoreGeneratedDocument.Views_Rookies_Update.ExecuteAsync()\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)\r\n   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ActionContext actionContext, IView view, ViewDataDictionary viewData, ITempDataDictionary tempData, String contentType, Nullable`1 statusCode)\r\n   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)\r\n   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()\r\n--- End of stack trace from previous location ---\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()\r\n--- End of stack trace from previous location ---\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)\r\n   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)\r\n   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)\r\n   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)",
+  "Properties": {
+    "EventId": {
+      "Id": 1,
+      "Name": "UnhandledException"
+    },
+    "SourceContext": "Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware",
+    "RequestId": "0HNBI0R90EF0D:00000005",
+    "RequestPath": "/NashTech/Rookies/Update/3410819f-d945-4780-afa9-013270a8affb",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:53:00.7575104+07:00",
+  "Level": "Error",
+  "MessageTemplate": "Object reference not set to an instance of an object.",
+  "TraceId": "60d611f7d8139fd48ee261c5fd4ebc0a",
+  "SpanId": "f992ed40596981dc",
+  "Properties": {
+    "SourceContext": "mvc_todolist.Middlewares.ExceptionHandlerMiddleware",
+    "RequestId": "0HNBI0R90EF0D:00000005",
+    "RequestPath": "/NashTech/Rookies/Update/3410819f-d945-4780-afa9-013270a8affb",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:53:01.3448752+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action}: {query}",
+  "TraceId": "e44ff563b08554bdbba6874ab0747370",
+  "SpanId": "54792272d95301d9",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "query": "mvc_todolist.Commons.QueryParameters`1[mvc_todolist.Models.Entities.Person]",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "3fec3022-f063-408c-93f4-244e47713833",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0R90EF0D:00000009",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:53:02.8685561+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action}: {query}",
+  "TraceId": "354a89ad19858cd7606837c91226da9a",
+  "SpanId": "a6dc2c7bd2333b36",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "query": "mvc_todolist.Commons.QueryParameters`1[mvc_todolist.Models.Entities.Person]",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "3fec3022-f063-408c-93f4-244e47713833",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0R90EF0D:0000000D",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:53:10.6356763+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action}: {query}",
+  "TraceId": "046c75430a831a208f34bcafe0876668",
+  "SpanId": "bb8b52974cd7d9cf",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "query": "mvc_todolist.Commons.QueryParameters`1[mvc_todolist.Models.Entities.Person]",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "3fec3022-f063-408c-93f4-244e47713833",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0R90EF0D:00000027",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0R90EF0D"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:35.9913587+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "9fe3bc0e6669b99a2304fe0ed3148825",
+  "SpanId": "6c3150aff105e15b",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000001",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:40.7425731+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "05f78d8746cd18f465a1c5ed5e07b2b0",
+  "SpanId": "93767a9730b5b3e5",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "SetLanguage",
+    "Data": "en",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "83b77cca-e2ef-44a8-aba5-dd6e300fdd23",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.SetLanguage (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000001B",
+    "RequestPath": "/NashTech/Rookies/SetLanguage",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:40.7705056+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "f1c7975dc9f22b77aacedc430499a054",
+  "SpanId": "b746d2aea1d42d8c",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000001D",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:42.6318017+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "b4d438c0e1824ebbc5efbc21a88a1e35",
+  "SpanId": "35b69220813acc10",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000004D",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:47.1713185+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "ef24a5b15ea40500c174f228aa1a3184",
+  "SpanId": "da1eec6140ed22a0",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "Age>=20;",
+      "Order": "",
+      "LogicFilter": "and",
+      "Search": null,
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000065",
+    "RequestPath": "/NashTech/Rookies/Index",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:49.6428588+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "1e52aca2b40cc8d9f65e0e0a16a5ce80",
+  "SpanId": "4297b4632abc1ba6",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "BirthYear>=2003;",
+      "Order": "",
+      "LogicFilter": "and",
+      "Search": null,
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000007D",
+    "RequestPath": "/NashTech/Rookies/Index",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:51.9732837+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "54effd85434888454afba30792c0f357",
+  "SpanId": "c5444ff5a80121e6",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "Gender==0;",
+      "Order": "",
+      "LogicFilter": "and",
+      "Search": null,
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000095",
+    "RequestPath": "/NashTech/Rookies/Index",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:53.2711994+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "5fe550677ece3950ffdf6b38cac8ead4",
+  "SpanId": "be039f6f258aa646",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "Gender==1;",
+      "Order": "",
+      "LogicFilter": "and",
+      "Search": null,
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000000AD",
+    "RequestPath": "/NashTech/Rookies/Index",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:57:53.9921556+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "2da8150256642accecbbfa13eb271e86",
+  "SpanId": "a8d9a879b16aac4b",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "Gender==2;",
+      "Order": "",
+      "LogicFilter": "and",
+      "Search": null,
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000000C5",
+    "RequestPath": "/NashTech/Rookies/Index",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:07.3793021+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "2e07fe540e506d8aa41122f4494460ed",
+  "SpanId": "f820ee500e5f5dee",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "CreatePerson",
+    "Data": {
+      "Id": "00000000-0000-0000-0000-000000000000",
+      "Username": "Hieu",
+      "FirstName": "123",
+      "LastName": "123",
+      "Address": "123",
+      "FullName": "123 123",
+      "Password": "123",
+      "Gender": 0,
+      "CreateAt": "0001-01-01T00:00:00.0000000",
+      "CreateBy": "00000000-0000-0000-0000-000000000000",
+      "DateOfBirth": "2003-06-02T00:00:00.0000000",
+      "BirthYear": 2003,
+      "Graduated": true,
+      "Age": 22,
+      "_typeTag": "PersonViewModel"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "78edb2e6-dd6d-45eb-a8ef-0232459c9bb1",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.CreatePerson (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000000F9",
+    "RequestPath": "/NashTech/Rookies/CreatePerson",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:07.3979011+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "aa322e4df086e813fcfa1db2adb4f528",
+  "SpanId": "508580e89c0c34cc",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000000FB",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:08.8308825+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "e0fe96f708581c7155b768c61aabf1b8",
+  "SpanId": "ed8825f6ac4513cf",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Remove",
+    "Data": "bb03553c-fa23-4acf-92a3-a0e66b57a067",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "99571bfd-a966-4556-ad6b-9b34117f3047",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Remove (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000113",
+    "RequestPath": "/NashTech/Rookies/Remove/bb03553c-fa23-4acf-92a3-a0e66b57a067",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:08.8745780+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "da0d62d0946e6df6412a0a14a440acf7",
+  "SpanId": "0c6bca84f0459a8f",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000115",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:12.6784261+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "49f2a08391a86cdc176ebce895d401db",
+  "SpanId": "8d9fc718dbc7be46",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Update",
+    "Data": {
+      "Id": "e4f5b786-eb53-4aae-b95d-dc6a228f3b55",
+      "Username": "jane.smith",
+      "FirstName": "Jane",
+      "LastName": "234234",
+      "Address": "456 Oak Ave",
+      "FullName": "234234 Jane",
+      "Password": "Pass456!",
+      "Gender": 1,
+      "CreateAt": "0001-01-01T00:00:00.0000000",
+      "CreateBy": "00000000-0000-0000-0000-000000000000",
+      "DateOfBirth": "2000-03-31T00:00:00.0000000",
+      "BirthYear": 2000,
+      "Graduated": true,
+      "Age": 25,
+      "_typeTag": "PersonViewModel"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "331b3c17-b164-4d77-80ea-6bc775c52aea",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Update (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000149",
+    "RequestPath": "/NashTech/Rookies/Update/e4f5b786-eb53-4aae-b95d-dc6a228f3b55",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:12.6931057+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "5458f82de755ee2a4a38fcf0ea4ae816",
+  "SpanId": "c77f4a5767139512",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000014B",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:14.7824814+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "30d75c65d60b1ac5bf53641eabc692de",
+  "SpanId": "036f769fb748c1bd",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Remove",
+    "Data": "e4f5b786-eb53-4aae-b95d-dc6a228f3b55",
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "99571bfd-a966-4556-ad6b-9b34117f3047",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Remove (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:0000017F",
+    "RequestPath": "/NashTech/Rookies/Remove/e4f5b786-eb53-4aae-b95d-dc6a228f3b55",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:14.8056458+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "4a6c97499acd10b3db91b15ff97a3e46",
+  "SpanId": "52d3819f1a7c0b1e",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:00000181",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:44.8313868+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "2838d1cbcdb049e99e6c2f3f2bd4d3c6",
+  "SpanId": "525f4f09b6b6e95f",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "Index",
+    "Data": {
+      "Filter": "",
+      "Order": "",
+      "LogicFilter": "",
+      "Search": "",
+      "PageSize": 10,
+      "PageIndex": 1,
+      "_typeTag": "QueryParameters`1"
+    },
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "a58ea155-3ac5-41f1-b728-147dde3100a7",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.Index (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000001B3",
+    "RequestPath": "/NashTech",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:47.3337352+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "ddb3d116dbb5657d7ce0a8ddd6616f2f",
+  "SpanId": "86a038a67fe5d092",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "GetOldestPeron",
+    "Data": null,
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "63c89b99-41ca-4956-b568-cff9aeebd527",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.GetOldestPeron (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000001CB",
+    "RequestPath": "/NashTech/Rookies/GetOldestPeron",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+} {
+  "Timestamp": "2025-04-02T23:58:49.9434100+07:00",
+  "Level": "Information",
+  "MessageTemplate": "[Controller]: {Controller} - [Action]: {Action} {@Data}",
+  "TraceId": "8bb1323f107857fb5e85f02500693657",
+  "SpanId": "1d427291f99aa1e5",
+  "Properties": {
+    "Controller": "Rookies",
+    "Action": "GetOldestPeron",
+    "Data": null,
+    "SourceContext": "mvc_todolist.Controllers.RookiesController",
+    "ActionId": "63c89b99-41ca-4956-b568-cff9aeebd527",
+    "ActionName": "mvc_todolist.Controllers.RookiesController.GetOldestPeron (mvc-todolist)",
+    "RequestId": "0HNBI0TRTOSBG:000001FF",
+    "RequestPath": "/NashTech/Rookies/GetOldestPeron",
+    "ConnectionId": "0HNBI0TRTOSBG"
+  }
+}
