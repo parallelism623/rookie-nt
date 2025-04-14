@@ -1,0 +1,47 @@
+﻿@using mvc_todolist.Commons.Resources
+
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <td>@LabelsResource.UsernameTitleColumn</td>
+                <td>@LabelsResource.FullNameTitleColumn</td>
+                <td>@LabelsResource.GenderTitleColumn</td>
+                <td>@LabelsResource.DateOfBirthTitleColumn</td>
+                <td>@LabelsResource.AgeTitleColumn</td>
+                <td>@LabelsResource.AddressTitleColumn</td>
+                <td>Graduated</td>
+                <td>@LabelsResource.ActionTitleColumn</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in @Model)
+            {
+                <tr>
+                    <td>@row.Username</td>
+                    <td>@row.FullName</td>
+                    <td>@(row.Gender == 0 ? "Male" : row.Gender == 1 ? "Female" : "Other")</td>
+                    <td class="format-date-dmy">@row.DateOfBirth.ToString("dd-MM-yyyy")</td>
+                    <td>@row.Age</td>
+                    <td>@row.Address</td>
+                    <td><i class="@(row.Graduated ? "bi bi-check-square-fill text-success" : "bi bi-x-square-fill text-danger")"></i></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="Update" asp-route-id="@row.Id">
+                            <i class="bi bi-pencil"></i> @LabelsResource.EditAction
+                        </a>
+                        <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@row.Id">
+                            <i class="bi bi-trash"></i> @LabelsResource.DeleteAction
+                        </a>
+                        <a class="btn btn-info btn-sm" asp-action="ViewDetail" asp-route-id="@row.Id">
+                            <i class="bi bi-eye"></i> @LabelsResource.ViewDetailAction
+                        </a>
+                    </td>
+                    
+                </tr>
+                
+            }
+        </tbody>
+</table>
+</div>
+<script src="~/js/controllers/rookies.js"></script>
