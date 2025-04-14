@@ -1,4 +1,4 @@
-﻿namespace mvc_todolist.Commons.Options
+﻿namespace mvc_todolist.Commons.Models.Options
 {
     public class RedisClientOptions
     {

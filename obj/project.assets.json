@@ -4116,11 +4116,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\mvc-todolist\\mvc-todolist.csproj",
+      "projectUniqueName": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\src\\mvc-todolist\\mvc-todolist.csproj",
       "projectName": "mvc-todolist",
-      "projectPath": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\mvc-todolist\\mvc-todolist.csproj",
+      "projectPath": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\src\\mvc-todolist\\mvc-todolist.csproj",
       "packagesPath": "C:\\Users\\hieud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\mvc-todolist\\obj\\",
+      "outputPath": "C:\\Users\\hieud\\Documents\\code\\C#\\rookie-nt\\src\\mvc-todolist\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

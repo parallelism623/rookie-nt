@@ -14,10 +14,9 @@ namespace mvc_todolist
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
             return services.AddScoped<IUnitOfWork, UnitOfWork>()
-                           .AddScoped<IImportExportService, ImportExportService>()
-                           .AddScoped<IPersonService, PersonService>()
-                           .AddConfigResourceLocalization()
-                           .AddMemoryCacheService();
+                .AddScoped<IImportExportService, ImportExportService>()
+                .AddScoped<IPersonService, PersonService>()
+                .AddConfigResourceLocalization();
         }
 
 
