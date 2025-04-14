@@ -1,8 +1,8 @@
-﻿using Mapster;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Rookies.Application;
+
 public static class DependencyInjection
 {
     public static IServiceCollection ConfigureApplicationLayer(this IServiceCollection services)
@@ -10,6 +10,7 @@ public static class DependencyInjection
         ConfigureMapster();
         return services.ConfigureMediator();
     }
+
     public static IServiceCollection ConfigureMediator(this IServiceCollection services)
     {
         return services.AddMediatR(options =>

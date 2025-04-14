@@ -7,13 +7,12 @@ namespace Rookies.Persistence
     public class RookiesDbContext : DbContext, IUnitOfWork
     {
         public RookiesDbContext(DbContextOptions<RookiesDbContext> options) : base(options)
-        {}
-
+        { }
 
         public DbSet<Person> Persons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {   
             modelBuilder.ApplyConfiguration(new PersonConfiguration());
             base.OnModelCreating(modelBuilder);
         }
@@ -37,6 +36,6 @@ namespace Rookies.Persistence
                 auditableEntity.ModifiedBy = Guid.NewGuid();
             }
             await base.SaveChangesAsync();
-        }        
+        }
     }
 }

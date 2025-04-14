@@ -1,16 +1,13 @@
 ﻿using Rookies.Contract.Models;
 using Rookies.Contract.Shared;
 using Rookies.Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rookies.Persistence.Repositories;
+
 public class PersonRepository : BaseRepository<Person, Guid>, IPersonRepository
 {
     private readonly RookiesDbContext _context;
+
     public PersonRepository(RookiesDbContext context) : base(context)
     {
         _context = context;
@@ -20,18 +17,26 @@ public class PersonRepository : BaseRepository<Person, Guid>, IPersonRepository
     {
         IQueryable<Person> personsQueryable = _context.Persons.AsNoTracking();
         personsQueryable = FilterPersonQueryable(personsQueryable, queryParameters);
-        
+
         int totalCount = await personsQueryable.CountAsync();
 
         var persons = await personsQueryable
                         .Skip(queryParameters.PageSize * (queryParameters.PageIndex - 1))
                         .Take(queryParameters.PageSize)
                         .ToListAsync();
-        
-        return new() { Items = persons, 
-            PageIndex = queryParameters.PageIndex, 
-            PageSize = Math.Min(persons.Count, queryParameters.PageSize), 
-            TotalCount = totalCount };
+
+        return new()
+        {
+            Items = persons,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = Math.Min(persons.Count, queryParameters.PageSize),
+            TotalCount = totalCount
+        };
+    }
+
+    public Task<Person?> GetByEmailAsync(string email)
+    {
+        return _context.Persons.FirstOrDefaultAsync(p => p.Email.Equals(email));
     }
 
     private static IQueryable<Person> FilterPersonQueryable(IQueryable<Person> persons, PersonQueryParameters queryParameters)
@@ -51,6 +56,4 @@ public class PersonRepository : BaseRepository<Person, Guid>, IPersonRepository
         }
         return persons;
     }
-
-
 }

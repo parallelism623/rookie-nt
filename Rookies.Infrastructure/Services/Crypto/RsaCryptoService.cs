@@ -9,10 +9,12 @@ namespace Rookies.Infrastructure.Services.Crypto
     public class RsaCryptoService : ICryptoService
     {
         private readonly RsaCryptoOptions _rsaOptions;
+
         public RsaCryptoService(IOptions<RsaCryptoOptions> rsaOptions)
         {
             _rsaOptions = rsaOptions.Value;
         }
+
         public string Decrypt(string encryptedData)
         {
             var privateKey = Convert.FromBase64String(_rsaOptions.PrivateKey);
@@ -34,4 +36,3 @@ namespace Rookies.Infrastructure.Services.Crypto
         }
     }
 }
-

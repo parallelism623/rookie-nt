@@ -4,6 +4,7 @@ using Rookies.Infrastructure.Options;
 using Rookies.Infrastructure.Services.Crypto;
 
 namespace Rookies.Infrastructure;
+
 public static class DependencyInjection
 {
     public static IServiceCollection ConfigureInfrastructureService(this IServiceCollection services)
@@ -17,5 +18,4 @@ public static class DependencyInjection
     {
         return services.AddScoped<ICryptoServiceStrategy, CryptoServiceStrategy>();
     }
-
 }

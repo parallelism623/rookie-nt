@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Rookies.Contract.Shared;
 
-namespace Rookies.Contract.Shared;
 public class PagingResult<T>
 {
     private const int MaxPageSize = 50;
 
     private int _pageSize;
+
     public int PageSize
     {
         get
@@ -21,6 +17,7 @@ public class PagingResult<T>
             _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
         }
     }
+
     public int PageIndex { get; set; }
     public int TotalCount { get; set; }
 

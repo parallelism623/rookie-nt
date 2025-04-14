@@ -1,14 +1,9 @@
 ﻿using EFCore.BulkExtensions;
 using Rookies.Domain;
 using Rookies.Domain.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Rookies.Persistence.Repositories;
+
 public abstract class BaseRepository<T, TKey> : IBaseRepository<T, TKey>
     where TKey : notnull
     where T : class, IEntity<TKey>
@@ -20,6 +15,7 @@ public abstract class BaseRepository<T, TKey> : IBaseRepository<T, TKey>
     {
         _context = context;
     }
+
     public void Add(T entity)
     {
         _context.Set<T>().Add(entity);
@@ -27,7 +23,7 @@ public abstract class BaseRepository<T, TKey> : IBaseRepository<T, TKey>
 
     public async Task BulkAddAsync(IEnumerable<T> entities)
     {
-       await _context.BulkInsertAsync(entities);  
+        await _context.BulkInsertAsync(entities);
     }
 
     public async Task BulkDeleteAsync(IEnumerable<T> entities)

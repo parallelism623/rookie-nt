@@ -42,4 +42,3 @@ finally
 {
     Console.WriteLine("Application has stopped.");
 }
-

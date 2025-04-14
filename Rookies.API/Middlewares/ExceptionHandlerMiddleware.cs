@@ -9,7 +9,6 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
 {
     private readonly ILogger<ExceptionHandlerMiddleware> _logger;
 
-
     public ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logger)
     {
         _logger = logger;
@@ -23,15 +22,14 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
         context.Response.ContentType = "application/json";
         var message = GetExceptionResponseMessage(exception) ?? "";
         var errorResponse = new Result
-        { 
-            Errors = new List<Error> { new Error(message, exception.Message) }, 
-            StatusCode = statusCode, 
-            IsSuccess = false 
+        {
+            Errors = new List<Error> { new Error(message, exception.Message) },
+            StatusCode = statusCode,
+            IsSuccess = false
         };
         await context.Response.WriteAsJsonAsync(errorResponse, cancellationToken);
         return true;
     }
-
 
     private static int GetExceptionResponseStatusCode(Exception exception)
     {
@@ -44,7 +42,7 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
             InternalServerErrorException => 500,
             _ => 400
         };
-    }   
+    }
 
     private static string GetExceptionResponseMessage(Exception exception)
     {
@@ -58,5 +56,4 @@ public class ExceptionHandlerMiddleware : IExceptionHandler
             _ => "Bad request"
         };
     }
-
 }

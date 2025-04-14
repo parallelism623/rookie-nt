@@ -7,7 +7,7 @@ using Rookies.Domain.Repositories;
 using Rookies.Infrastructure.Services.Crypto;
 
 namespace Rookies.Application.UseCases.Persons.Queries;
-public record GetPersonsQuery(PersonQueryParameters QueryParameters) 
+public record GetPersonsQuery(PersonQueryParameters QueryParameters)
     : IRequest<Result<PagingResult<PersonResponseModel>>>
 { }
 
@@ -27,28 +27,27 @@ public class GetPersonsQueryHandler(IPersonRepository personRepository,
             DecryptPersonsInfo(persons.Items);
             logger.LogInformation(LoggingTemplateMessages.PersonQuerySuccess, persons.TotalCount);
 
-
             return Result<PagingResult<PersonResponseModel>>.Success(persons.Adapt<PagingResult<PersonResponseModel>>());
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
-            return new(null ,500, false, new Error("ServerInternalError", ex.Message));
+            return new(null, 500, false, new Error("ServerInternalError", ex.Message));
         }
     }
+
     private void SetEncryptionAlgorithm(string algo)
     {
         cryptoServiceStrategy.SetCryptoAlgorithm(algo);
     }
 
-
     private void DecryptPersonsInfo(IEnumerable<Person>? persons)
     {
-        if(persons == null || !persons.Any())
+        if (persons == null || !persons.Any())
         {
             return;
         }
-        foreach(var p in persons)
+        foreach (var p in persons)
         {
             DecryptPersonInfo(p);
         }
@@ -59,5 +58,4 @@ public class GetPersonsQueryHandler(IPersonRepository personRepository,
         person.PhoneNumber = cryptoServiceStrategy.Decrypt(person.PhoneNumber);
         person.Email = cryptoServiceStrategy.Decrypt(person.Email);
     }
-
 }

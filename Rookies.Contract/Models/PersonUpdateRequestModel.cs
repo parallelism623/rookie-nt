@@ -4,10 +4,12 @@ using Rookies.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Rookies.Contract.Models;
+
 public class PersonUpdateRequestModel
 {
     [Required(ErrorMessage = ErrorMessages.PersonIdRequire)]
     public Guid? Id { get; set; }
+
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public DateTime DateOfBirth { get; set; }

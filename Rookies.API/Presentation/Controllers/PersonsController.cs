@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Rookies.Application.UseCases.Persons.Commands;
 using Rookies.Application.UseCases.Persons.Queries;
-using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
 
 namespace Rookies.API.Presentation.Controllers;
@@ -11,6 +10,7 @@ namespace Rookies.API.Presentation.Controllers;
 public class PersonsController : ApiBaseController
 {
     private readonly IMediator _sender;
+
     public PersonsController(IMediator sender)
     {
         _sender = sender;
@@ -55,5 +55,4 @@ public class PersonsController : ApiBaseController
 
         return GetResponse(result);
     }
-
 }

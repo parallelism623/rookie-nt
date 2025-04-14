@@ -9,7 +9,6 @@ namespace Rookies.API;
 
 public static class DependencyInjection
 {
-
     public static async Task InitializeDatabaseAsync(this WebApplication app)
     {
         using var scope = app.Services.CreateScope();
@@ -26,7 +25,7 @@ public static class DependencyInjection
     {
         var persons = new List<Person>
         {
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "John",
@@ -43,7 +42,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("john.doe@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("123-456-7890")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Jane",
@@ -60,7 +59,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("jane.smith@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("234-567-8901")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Michael",
@@ -77,7 +76,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("michael.nguyen@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("345-678-9012")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Linda",
@@ -94,7 +93,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("linda.tran@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("456-789-0123")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "David",
@@ -111,7 +110,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("david.kim@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("567-890-1234")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Emily",
@@ -128,7 +127,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("emily.pham@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("678-901-2345")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Daniel",
@@ -145,7 +144,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("daniel.lee@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("789-012-3456")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Sophia",
@@ -162,7 +161,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("sophia.nguyen@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("890-123-4567")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Kevin",
@@ -179,7 +178,7 @@ public static class DependencyInjection
                 Email = cryptoServiceStrategy.Encrypt("kevin.tran@example.com"),
                 PhoneNumber = cryptoServiceStrategy.Encrypt("901-234-5678")
             },
-            new Person
+            new()
             {
                 Id = Guid.NewGuid(),
                 FirstName = "Olivia",

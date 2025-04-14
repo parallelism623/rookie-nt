@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Rookies.API.Filters.Attributes;
 using Rookies.Contract.Shared;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Rookies.API.Presentation.Controllers;
 
@@ -18,6 +17,7 @@ public abstract class ApiBaseController : ControllerBase
             _ => StatusCode(StatusCodes.Status500InternalServerError, result)
         };
     }
+
     protected IActionResult OnResultFailure<T>(T result)
         where T : Result
     {

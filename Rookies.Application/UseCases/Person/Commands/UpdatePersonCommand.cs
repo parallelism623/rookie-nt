@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Rookies.Application.Services.Crypto;
-using Rookies.Contract.Exceptions;
+﻿using Rookies.Application.Services.Crypto;
 using Rookies.Contract.Messages;
 using Rookies.Contract.Models;
 using Rookies.Contract.Shared;
@@ -12,13 +10,11 @@ namespace Rookies.Application.UseCases.Persons.Commands;
 
 public record UpdatePersonCommand(PersonUpdateRequestModel Model) : IRequest<Result<string>> { }
 
-
 public class UpdatePersonCommandHandler(IPersonRepository personRepository,
                                         ILogger<UpdatePersonCommandHandler> logger,
-                                        ICryptoServiceStrategy cryptoServiceStrategy) 
+                                        ICryptoServiceStrategy cryptoServiceStrategy)
                                         : IRequestHandler<UpdatePersonCommand, Result<string>>
 {
-
     public async Task<Result<string>> Handle(UpdatePersonCommand request, CancellationToken cancellationToken)
     {
         try
@@ -49,17 +45,17 @@ public class UpdatePersonCommandHandler(IPersonRepository personRepository,
 
             return Result<string>.Success(ResponseMessages.PersonUpdatedSuccess);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
             return Result<string>.Failure(ex.Message, 500);
         }
-    }       
+    }
+
     private void SetEncryptionAlgorithm(string algo)
     {
         cryptoServiceStrategy.SetCryptoAlgorithm(algo);
     }
-
 
     private void EncryptPersonInfo(Person person)
     {

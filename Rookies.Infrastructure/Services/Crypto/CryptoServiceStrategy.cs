@@ -3,16 +3,19 @@ using Rookies.Application.Services.Crypto;
 using Rookies.Contract.Exceptions;
 
 namespace Rookies.Infrastructure.Services.Crypto;
+
 public class CryptoServiceStrategy : ICryptoServiceStrategy
 {
     private readonly IServiceProvider _serviceProvider;
     private ICryptoService? _cryptoService;
 
     private string? _currentAlgorithm;
+
     public CryptoServiceStrategy(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }
+
     public string Decrypt(string encryptedData)
     {
         CheckExistsCryptoService();
@@ -36,14 +39,13 @@ public class CryptoServiceStrategy : ICryptoServiceStrategy
         }
         catch
         {
-
-            throw new BadRequestException($"No support {algorithm} crypto algorithm"); 
+            throw new BadRequestException($"No support {algorithm} crypto algorithm");
         }
     }
 
     private void CheckExistsCryptoService()
     {
-        if(_cryptoService == null)
+        if (_cryptoService == null)
         {
             throw new BadRequestException($"Crypto service can not use until it is initialized");
         }

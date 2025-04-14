@@ -5,34 +5,38 @@ using Rookies.Contract.Shared;
 using Rookies.Domain.Entities;
 using Rookies.Domain.Repositories;
 using Rookies.Infrastructure.Services.Crypto;
-
+    
 namespace Rookies.Application.UseCases.Persons.Commands;
 public record CreatePersonCommand(PersonCreateRequestModel Model) : IRequest<Result<string>> { }
-
 
 public class CreatePersonCommandHandler(IPersonRepository personRepository,
                                         ILogger<CreatePersonCommandHandler> logger,
                                         ICryptoServiceStrategy cryptoService)
                                         : IRequestHandler<CreatePersonCommand, Result<string>>
 {
-
     public async Task<Result<string>> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
     {
         try
         {
             SetEncryptionAlgorithm(CryptoAlgorithm.RSA);
 
+            if (!await IsPersonEmailExists(request.Model.Email))
+            {
+                return Result<string>.Failure(null!, 400, new Error("Email exists", ErrorMessages.EmailAlreadyExists));
+            }
             var person = request.Model.Adapt<Person>();
 
             EncryptPersonInfo(person);
 
             logger.LogInformation(LoggingTemplateMessages.PersonCreatedWithIdSuccess, person.Id);
 
+            personRepository.Add(person);
+
             await personRepository.UnitOfWork.SaveChangesAsync();
 
             return Result<string>.Success(ResponseMessages.PersonCreatedSuccess);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
             return Result<string>.Failure(ex.Message, 500);
@@ -44,10 +48,16 @@ public class CreatePersonCommandHandler(IPersonRepository personRepository,
         cryptoService.SetCryptoAlgorithm(algo);
     }
 
-
     private void EncryptPersonInfo(Person person)
     {
         person.PhoneNumber = cryptoService.Encrypt(person.PhoneNumber);
         person.Email = cryptoService.Encrypt(person.Email);
+    }
+
+    private async Task<bool> IsPersonEmailExists(string? email)
+    {
+        var person = await personRepository.GetByEmailAsync(email!);
+
+        return person != null; 
     }
 }

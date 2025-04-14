@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Rookies.Contract.Messages;
 
-namespace Rookies.Contract.Messages;
 public static class LoggingTemplateMessages
 {
     public const string PersonCreatedWithIdSuccess = "Person with id {Id} created.";

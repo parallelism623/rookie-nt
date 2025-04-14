@@ -1,4 +1,5 @@
 ﻿namespace Rookies.Infrastructure.Options;
+
 public class RsaCryptoOptions
 {
     public string PublicKey { get; set; } = default!;

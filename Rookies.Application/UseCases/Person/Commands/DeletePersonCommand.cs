@@ -1,15 +1,12 @@
-﻿
-using Rookies.Contract.Exceptions;
-using Rookies.Contract.Messages;
+﻿using Rookies.Contract.Messages;
 using Rookies.Contract.Shared;
 using Rookies.Domain.Repositories;
 
 namespace Rookies.Application.UseCases.Persons.Commands;
 public record DeletePersonCommand(Guid Id) : IRequest<Result<string>> { }
 
-
 public class PersonDeleteCommandHandler(IPersonRepository personRepository,
-                                        ILogger<PersonDeleteCommandHandler> logger) 
+                                        ILogger<PersonDeleteCommandHandler> logger)
                                         : IRequestHandler<DeletePersonCommand, Result<string>>
 {
     public async Task<Result<string>> Handle(DeletePersonCommand request, CancellationToken cancellationToken)
@@ -36,7 +33,7 @@ public class PersonDeleteCommandHandler(IPersonRepository personRepository,
 
             return Result<string>.Success(ResponseMessages.PersonDeletedSuccess, 200);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
             return Result<string>.Failure(ex.Message, 500);
