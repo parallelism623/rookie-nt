@@ -6,18 +6,26 @@ namespace mvc_todolist.Commons.Helpers
 {
     public static class ExpressionTreeHelper
     {
+        private static readonly string PatternRegexFilter = @"(==|!=|>=|<=|>|<)";
         public static Expression<Func<T, bool>> GetFilterExpressionTree<T>(string? condition, string? filterJoin)
         {
             if (condition == null)
             {
                 throw new ArgumentException("Condition null");
             }
+
             var param = Expression.Parameter(typeof(T), $"{nameof(T)[0]}");
             var conditionList = condition.Split(";");
             List<Expression> expressions = new List<Expression>();
             foreach (var it in conditionList)
             {
-                if(!string.IsNullOrEmpty(it))
+                if (!string.IsNullOrEmpty(it))
+                    ValidationCondition<T>(it);
+            }
+            foreach (var it in conditionList)
+            {
+              
+                if (!string.IsNullOrEmpty(it))
                     expressions.Add(ParseCondition(it, param));
             }
             if (expressions.Count > 0)
@@ -34,15 +42,10 @@ namespace mvc_todolist.Commons.Helpers
             return default!;
 
         }
-        /*p => p.Age >= 10 && p.Age <= 100 && p.YearBirth==2000*/
-        /*Age>=10;Age<=100;YearBirht=2000*/
 
         private static Expression ParseCondition(string condition, ParameterExpression param)
         {
-            var parts = Regex.Split(condition, @"(==|!=|>=|<=|>|<)").Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
-
-            if (parts.Length != 3) throw new Exception($"Invalid condition: {condition}");
-
+            var parts = SplitByRegex(condition, PatternRegexFilter);
             var property = Expression.Property(param, parts[0].Trim());
             var value = Convert.ChangeType(parts[2].Trim().Trim('\''), property.Type);
             var constant = Expression.Constant(value, property.Type);
@@ -57,6 +60,22 @@ namespace mvc_todolist.Commons.Helpers
                 "<=" => Expression.LessThanOrEqual(property, constant),
                 _ => throw new Exception($"Unsupported operator: {parts[1]}")
             };
+        }
+
+        private static void ValidationCondition<T>(string condition)
+        {
+            var propertiesList = ReflectionHelper.GetPropertiesNameOfType<T>();
+            var parts = SplitByRegex(condition, PatternRegexFilter);
+            if (parts.Length != 3) throw new Exception($"Invalid condition: {condition}");
+            if (propertiesList.FirstOrDefault(p => p == parts[0]) == null)
+            {
+                throw new Exception($"Invalid condition: {condition}");
+            }
+        }
+
+        private static string[] SplitByRegex(string condition, string regex)
+        {
+            return Regex.Split(condition, regex).Where(p => !string.IsNullOrWhiteSpace(p)).ToArray();
         }
     }
 }

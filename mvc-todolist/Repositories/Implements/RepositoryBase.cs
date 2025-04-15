@@ -29,19 +29,6 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T>, IDisposable
         {
             query = query.Where(filter);
         }
-        
-        if(!string.IsNullOrEmpty(includeProperties))
-        {
-            foreach(var it in includeProperties.Split(','))
-            {
-                query.Include(it);
-            }
-        }
-
-        if(orderBy != null)
-        {
-            query = orderBy(query);
-        }
 
         return await query.ToListAsync();
     }

@@ -10,12 +10,9 @@ namespace mvc_todolist.Middlewares
     public class ExceptionHandlerMiddleware : IExceptionHandler
     {
         private readonly ILogger<ExceptionHandlerMiddleware> _logger;
-        private readonly ITempDataDictionaryFactory _tempDataFactory;
 
-        public ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logger,
-             ITempDataDictionaryFactory tempDataFactory)
+        public ExceptionHandlerMiddleware(ILogger<ExceptionHandlerMiddleware> logger)
         {
-            _tempDataFactory = tempDataFactory;
             _logger = logger;
         }
 
@@ -25,7 +22,6 @@ namespace mvc_todolist.Middlewares
 
             _logger.LogError(exception.Message);
 
-            var tempData = _tempDataFactory.GetTempData(context);
             var statusCode = GetExceptionResponseStatusCode(exception);
             context.Response.StatusCode = statusCode;
             context.Response.ContentType = "application/json";
