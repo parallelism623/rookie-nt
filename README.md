@@ -7,10 +7,14 @@
 - **Xem danh sách Person**  
   - Hiển thị danh sách dữ liệu Person theo dạng bảng.
   - Mỗi bản ghi sẽ có các thao tác: **Edit**, **Delete** và **View Detail**.
-
+- **Filter**
+  - Có thể filter theo Gender và Tuổi
+- **Import Export**
+  - Export dữ liệu trên bảng hiện tại thành file excel
 - **Select Culture**  
   - Cho phép người dùng chọn Culture tương ứng (hỗ trợ đa ngôn ngữ).
-
+- **Loggings**
+  - Logging json log trong Loggings
 ## Yêu Cầu Chạy Chương Trình
 
 Để chạy chương trình, bạn chỉ cần thực hiện các lệnh sau trong terminal:
